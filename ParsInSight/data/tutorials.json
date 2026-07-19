@@ -1,0 +1,76 @@
+{
+  "tutorials": [
+    {
+      "id": "what_is_linux",
+      "title_tr": "Linux Nedir?",
+      "title_en": "What is Linux?",
+      "icon": "🐧",
+      "level": "beginner",
+      "content_tr": "# Linux Nedir?\n\nLinux, dünyada en çok kullanılan işletim sistemi çekirdeğidir. Android telefonunuzdan süper bilgisayarlara, web sunucularından akıllı televizyonlara kadar her yerde Linux çalışır.\n\n## Linux ve Windows Farkı Nedir?\n\n- **Windows**: Microsoft tarafından geliştirilen, ücretli bir işletim sistemidir.\n- **Linux**: Tamamen ücretsiz ve açık kaynaklıdır. Herkes kaynak kodunu inceleyebilir, değiştirebilir ve dağıtabilir.\n\n## Neden Linux?\n\n✅ **Ücretsiz**: Lisans ücreti ödemezsiniz\n✅ **Güvenli**: Virüslere ve zararlı yazılımlara karşı çok daha dirençlidir\n✅ **Hızlı**: Eski bilgisayarlarda bile akıcı çalışır\n✅ **Özelleştirilebilir**: Her şeyi istediğiniz gibi değiştirebilirsiniz\n✅ **Topluluk**: Milyonlarca kullanıcıdan oluşan yardımsever bir topluluk\n\n## Pardus Nedir?\n\nPardus, TÜBİTAK tarafından geliştirilen Türkiye'nin millî Linux dağıtımıdır. Debian tabanlıdır ve özellikle Türk kullanıcılar için optimize edilmiştir.",
+      "content_en": "# What is Linux?\n\nLinux is the most widely used operating system kernel in the world. From your Android phone to supercomputers, from web servers to smart TVs, Linux runs everywhere.\n\n## What is the Difference Between Linux and Windows?\n\n- **Windows**: A paid operating system developed by Microsoft.\n- **Linux**: Completely free and open-source. Anyone can inspect, modify, and distribute the source code.\n\n## Why Linux?\n\n✅ **Free**: No license fee\n✅ **Secure**: Much more resistant to viruses and malware\n✅ **Fast**: Runs smoothly even on old computers\n✅ **Customizable**: Change everything to your liking\n✅ **Community**: A helpful community of millions of users\n\n## What is Pardus?\n\nPardus is Turkey's national Linux distribution developed by TÜBİTAK. It is Debian-based and optimized especially for Turkish users."
+    },
+    {
+      "id": "linux_filesystem",
+      "title_tr": "Linux Dosya Sistemi",
+      "title_en": "Linux File System",
+      "icon": "📁",
+      "level": "beginner",
+      "content_tr": "# Linux Dosya Sistemi\n\nLinux'ta Windows'taki gibi C:, D: sürücüleri yoktur. Bunun yerine tek bir kök dizin vardır: **/**\n\n## Temel Dizinler\n\n| Dizin | Açıklama |\n|-------|----------|\n| `/` | Kök dizin — her şey buradan başlar |\n| `/home` | Kullanıcı dosyaları (Windows'taki C:\\Users gibi) |\n| `/etc` | Sistem yapılandırma dosyaları |\n| `/bin` | Temel programlar ve komutlar |\n| `/usr` | Kullanıcı programları |\n| `/tmp` | Geçici dosyalar |\n| `/var` | Değişken veriler (loglar, veritabanları) |\n\n## Ev Dizininiz\n\nKullanıcı dosyalarınız `/home/kullanici_adi/` klasörünüzdedir. Bu, Windows'taki `C:\\Users\\Adınız` klasörüne eşdeğerdir.\n\n## Gizli Dosyalar\n\nLinux'ta nokta (.) ile başlayan dosyalar ve klasörler **gizlidir**. Örneğin `.bashrc` veya `.config/` gizli yapılandırma dosyalarıdır.",
+      "content_en": "# Linux File System\n\nIn Linux there are no C:, D: drives like in Windows. Instead, there is a single root directory: **/**\n\n## Basic Directories\n\n| Directory | Description |\n|-----------|-------------|\n| `/` | Root directory — everything starts here |\n| `/home` | User files (like C:\\Users in Windows) |\n| `/etc` | System configuration files |\n| `/bin` | Basic programs and commands |\n| `/usr` | User programs |\n| `/tmp` | Temporary files |\n| `/var` | Variable data (logs, databases) |\n\n## Your Home Directory\n\nYour user files are in `/home/username/`. This is equivalent to the `C:\\Users\\YourName` folder in Windows.\n\n## Hidden Files\n\nIn Linux, files and folders starting with a dot (.) are **hidden**. For example `.bashrc` or `.config/` are hidden configuration files."
+    },
+    {
+      "id": "package_management",
+      "title_tr": "Paket Yönetimi",
+      "title_en": "Package Management",
+      "icon": "📦",
+      "level": "beginner",
+      "content_tr": "# Paket Yönetimi\n\nLinux'ta yazılım, **paket yöneticisi** aracılığıyla kurulur. Windows App Store veya Google Play'e benzer bir sistemdir — ama çok daha güçlü!\n\n## APT Nedir?\n\nPardus, **APT** (Advanced Package Tool) paket yöneticisini kullanır.\n\n## Temel Komutlar\n\n```bash\n# Paket listesini güncelle\nsudo apt update\n\n# Tüm yazılımları güncelle\nsudo apt upgrade -y\n\n# Program kur\nsudo apt install firefox\n\n# Program kaldır\nsudo apt remove firefox\n\n# Gereksiz paketleri temizle\nsudo apt autoremove\n```\n\n## Flatpak Nedir?\n\nFlatpak, dağıtımdan bağımsız bir paket sistemidir. Flathub deposunu ekleyerek binlerce uygulamaya erişebilirsiniz.",
+      "content_en": "# Package Management\n\nIn Linux, software is installed through a **package manager**. It's similar to the Windows App Store or Google Play — but much more powerful!\n\n## What is APT?\n\nPardus uses the **APT** (Advanced Package Tool) package manager.\n\n## Basic Commands\n\n```bash\n# Update package list\nsudo apt update\n\n# Update all software\nsudo apt upgrade -y\n\n# Install a program\nsudo apt install firefox\n\n# Remove a program\nsudo apt remove firefox\n\n# Clean unused packages\nsudo apt autoremove\n```\n\n## What is Flatpak?\n\nFlatpak is a distribution-independent packaging system. By adding the Flathub repository, you can access thousands of applications."
+    },
+    {
+      "id": "terminal_basics",
+      "title_tr": "Terminal Temelleri",
+      "title_en": "Terminal Basics",
+      "icon": "🖥️",
+      "level": "beginner",
+      "content_tr": "# Terminal Temelleri\n\nTerminal, bilgisayarınıza yazılı komutlar göndermenizi sağlar. Kulağa korkutucu gelebilir ama birkaç temel komutu öğrenmek yeterli!\n\n## En Sık Kullanılan Komutlar\n\n```bash\nls          # Bulunduğun klasörün içeriğini listele\ncd Masaüstü # 'Masaüstü' klasörüne geç\npwd         # Şu an hangi klasördesin?\nmkdir test  # 'test' adında yeni klasör oluştur\nrm dosya    # 'dosya' adındaki dosyayı sil\ncp a b      # 'a' dosyasını 'b' olarak kopyala\nmv a b      # 'a' dosyasını 'b' olarak taşı/yeniden adlandır\nclear       # Ekranı temizle\n```\n\n## sudo Nedir?\n\n`sudo` komutu yönetici (root) yetkileriyle komut çalıştırmanızı sağlar. Windows'taki 'Yönetici olarak çalıştır' seçeneği gibi.\n\n## Klavye Kısayolları\n\n- `Tab` → Otomatik tamamlama\n- `↑` → Önceki komutu getir\n- `Ctrl+C` → Çalışan komutu iptal et\n- `Ctrl+L` → Ekranı temizle",
+      "content_en": "# Terminal Basics\n\nThe terminal lets you send text commands to your computer. It might sound scary but learning a few basic commands is enough!\n\n## Most Common Commands\n\n```bash\nls          # List contents of current folder\ncd Desktop  # Go to 'Desktop' folder\npwd         # Which folder are you in now?\nmkdir test  # Create new folder named 'test'\nrm file     # Delete the file named 'file'\ncp a b      # Copy file 'a' as 'b'\nmv a b      # Move/rename file 'a' to 'b'\nclear       # Clear the screen\n```\n\n## What is sudo?\n\nThe `sudo` command lets you run commands with administrator (root) privileges. Like 'Run as administrator' in Windows.\n\n## Keyboard Shortcuts\n\n- `Tab` → Auto-complete\n- `↑` → Recall previous command\n- `Ctrl+C` → Cancel running command\n- `Ctrl+L` → Clear the screen"
+    },
+    {
+      "id": "file_permissions",
+      "title_tr": "Dosya İzinleri",
+      "title_en": "File Permissions",
+      "icon": "🔐",
+      "level": "intermediate",
+      "content_tr": "# Dosya İzinleri\n\nLinux'ta her dosya ve klasörün izinleri vardır. Bu sistem, güvenliği sağlamak için kritik öneme sahiptir.\n\n## İzin Türleri\n\n- **r** (read) → Okuma izni\n- **w** (write) → Yazma izni  \n- **x** (execute) → Çalıştırma izni\n\n## Kimin İzni?\n\nHer dosyanın 3 kullanıcı grubu için izni vardır:\n1. **Sahip** (owner) — Dosyanın sahibi\n2. **Grup** (group) — Aynı gruptaki kullanıcılar\n3. **Diğerleri** (others) — Geri kalan herkes\n\n## Örnek: `ls -l` Çıktısı\n\n```\n-rwxr-xr-- 1 ali ali 1234 Ocak 1 dosya.sh\n```\n\n- `-` → Normal dosya (d=dizin)\n- `rwx` → Sahip: okuma+yazma+çalıştırma\n- `r-x` → Grup: okuma+çalıştırma\n- `r--` → Diğerleri: sadece okuma\n\n## İzin Değiştirme\n\n```bash\nchmod +x dosya.sh     # Çalıştırma izni ver\nchmod 755 dosya.sh    # Standart program izni\n```",
+      "content_en": "# File Permissions\n\nIn Linux, every file and folder has permissions. This system is critical for security.\n\n## Permission Types\n\n- **r** (read) → Read permission\n- **w** (write) → Write permission\n- **x** (execute) → Execute permission\n\n## Whose Permission?\n\nEvery file has permissions for 3 user groups:\n1. **Owner** — The file's owner\n2. **Group** — Users in the same group\n3. **Others** — Everyone else\n\n## Example: `ls -l` Output\n\n```\n-rwxr-xr-- 1 ali ali 1234 Jan 1 file.sh\n```\n\n- `-` → Regular file (d=directory)\n- `rwx` → Owner: read+write+execute\n- `r-x` → Group: read+execute\n- `r--` → Others: read only\n\n## Changing Permissions\n\n```bash\nchmod +x file.sh     # Give execute permission\nchmod 755 file.sh    # Standard program permission\n```"
+    },
+    {
+      "id": "understanding_sudo",
+      "title_tr": "sudo'yu Anlamak",
+      "title_en": "Understanding sudo",
+      "icon": "🛡️",
+      "level": "beginner",
+      "content_tr": "# sudo'yu Anlamak\n\n`sudo` komutu, güvenli bir şekilde yönetici yetkileriyle komut çalıştırmanızı sağlar.\n\n## Neden sudo?\n\nLinux güvenlik odaklı bir sistemdir. Sistem dosyalarını değiştirmek, yazılım kurmak veya kritik ayarları değiştirmek için yönetici yetkisi gerekir.\n\nBu Windows'taki **Yönetici olarak çalıştır** seçeneğine benzer.\n\n## Nasıl Kullanılır?\n\n```bash\n# Normal kullanıcı olarak\nls /home\n\n# Yönetici yetkisiyle\nsudo apt install firefox\n```\n\n`sudo` yazdığınızda şifrenizi isteyecektir. Şifreyi yazarken ekranda hiçbir şey görünmez — bu normaldir!\n\n## Güvenlik Uyarısı\n\n⚠️ `sudo` kullanırken dikkatli olun. İnternetten kopyaladığınız komutları körü körüne çalıştırmayın. Her zaman ne yaptığını anlayın.\n\nP4rsInSight, çalıştıracağı her komutu size gösterir ve açıklar.",
+      "content_en": "# Understanding sudo\n\nThe `sudo` command allows you to run commands with administrator privileges in a secure way.\n\n## Why sudo?\n\nLinux is a security-focused system. Changing system files, installing software, or changing critical settings requires administrator privileges.\n\nThis is similar to **Run as administrator** in Windows.\n\n## How to Use It?\n\n```bash\n# As a regular user\nls /home\n\n# With administrator privileges\nsudo apt install firefox\n```\n\nWhen you type `sudo`, it will ask for your password. Nothing appears on screen while typing — this is normal!\n\n## Security Warning\n\n⚠️ Be careful when using `sudo`. Don't blindly run commands copied from the internet. Always understand what they do.\n\nP4rsInSight shows and explains every command it will run."
+    },
+    {
+      "id": "flatpak",
+      "title_tr": "Flatpak ve Flathub",
+      "title_en": "Flatpak and Flathub",
+      "icon": "📱",
+      "level": "beginner",
+      "content_tr": "# Flatpak ve Flathub\n\n## Flatpak Nedir?\n\nFlatpak, modern bir Linux paket formatıdır. Her Linux dağıtımında çalışır ve uygulamaları yalıtılmış (sandbox) ortamda çalıştırır.\n\n## Flathub Nedir?\n\nFlathub, Flatpak uygulamalarının merkezi deposudur. Discord, Spotify, VS Code gibi popüler uygulamaları buradan yükleyebilirsiniz.\n\n## Flatpak Kurulumu\n\n```bash\n# Flatpak'ı kur\nsudo apt install flatpak\n\n# Flathub deposunu ekle\nflatpak remote-add --if-not-exists flathub \\\n  https://dl.flathub.org/repo/flathub.flatpakrepo\n```\n\n## Flatpak ile Uygulama Kurma\n\n```bash\nflatpak install flathub com.spotify.Client\nflatpak run com.spotify.Client\n```\n\n## APT mi, Flatpak mi?\n\n- **APT**: Sistem entegreli, hafif, resmi paketler\n- **Flatpak**: Daha yeni sürümler, dağıtımdan bağımsız, sandbox güvenliği",
+      "content_en": "# Flatpak and Flathub\n\n## What is Flatpak?\n\nFlatpak is a modern Linux package format. It works on any Linux distribution and runs applications in an isolated (sandbox) environment.\n\n## What is Flathub?\n\nFlathub is the central repository for Flatpak applications. You can install popular applications like Discord, Spotify, and VS Code from here.\n\n## Installing Flatpak\n\n```bash\n# Install Flatpak\nsudo apt install flatpak\n\n# Add Flathub repository\nflatpak remote-add --if-not-exists flathub \\\n  https://dl.flathub.org/repo/flathub.flatpakrepo\n```\n\n## Installing Apps with Flatpak\n\n```bash\nflatpak install flathub com.spotify.Client\nflatpak run com.spotify.Client\n```\n\n## APT or Flatpak?\n\n- **APT**: System-integrated, lightweight, official packages\n- **Flatpak**: Newer versions, distro-independent, sandbox security"
+    },
+    {
+      "id": "updating_system",
+      "title_tr": "Sistemi Güncelleme",
+      "title_en": "Updating the System",
+      "icon": "🔄",
+      "level": "beginner",
+      "content_tr": "# Sistemi Güncelleme\n\nLinux'u güncel tutmak güvenlik açısından son derece önemlidir.\n\n## 2 Adımda Güncelleme\n\n```bash\n# 1. Adım: Paket listesini güncelle\nsudo apt update\n\n# 2. Adım: Tüm paketleri güncelle\nsudo apt upgrade -y\n```\n\n## Ne Sıklıkla?\n\nHaftada en az bir kez güncellemeniz önerilir. P4rsInSight size güncellemeler hakkında bildirim verir.\n\n## Güncelleme Güvenli midir?\n\nEvet! APT, bağımlılıkları otomatik yönetir ve güvenli bir şekilde güncelleme yapar.\n\n## Otomatik Güncellemeler\n\n`unattended-upgrades` paketi ile güvenlik güncellemeleri otomatik yapılabilir:\n\n```bash\nsudo apt install unattended-upgrades\n```",
+      "content_en": "# Updating the System\n\nKeeping Linux up to date is extremely important for security.\n\n## Update in 2 Steps\n\n```bash\n# Step 1: Update package list\nsudo apt update\n\n# Step 2: Update all packages\nsudo apt upgrade -y\n```\n\n## How Often?\n\nIt's recommended to update at least once a week. P4rsInSight will notify you about updates.\n\n## Is Updating Safe?\n\nYes! APT automatically manages dependencies and updates safely.\n\n## Automatic Updates\n\nSecurity updates can be done automatically with the `unattended-upgrades` package:\n\n```bash\nsudo apt install unattended-upgrades\n```"
+    }
+  ]
+}

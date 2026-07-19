@@ -1,0 +1,55 @@
+{
+  "app": { "name": "P4rsInSight", "tagline": "مرحباً بك في باردوس لينكس" },
+  "nav": {
+    "dashboard": "لوحة التحكم", "software_center": "مركز البرامج",
+    "windows_alternatives": "بدائل ويندوز", "profiles": "ملفات التثبيت",
+    "driver_assistant": "مساعد التعريفات", "maintenance": "صيانة النظام",
+    "learning_center": "مركز التعلم", "troubleshooting": "استكشاف الأخطاء", "settings": "الإعدادات"
+  },
+  "wizard": {
+    "title": "مرحباً بك في P4rsInSight", "subtitle": "لنبدأ رحلتك مع لينكس معاً",
+    "step_language": "اللغة", "step_theme": "المظهر", "step_level": "مستوى الخبرة",
+    "choose_language": "اختر لغتك المفضلة",
+    "choose_theme": "اختر مظهرك المفضل",
+    "choose_level": "اختر مستوى خبرتك",
+    "theme_light": "المظهر الفاتح", "theme_dark": "المظهر الداكن",
+    "level_beginner": "مبتدئ", "level_beginner_desc": "أستخدم لينكس للمرة الأولى",
+    "level_intermediate": "متوسط", "level_intermediate_desc": "أعرف الأوامر الأساسية",
+    "level_advanced": "متقدم", "level_advanced_desc": "لدي خبرة وأريد أدوات الإدارة",
+    "btn_next": "التالي", "btn_back": "رجوع", "btn_finish": "ابدأ", "btn_skip": "تخطي"
+  },
+  "dashboard": {
+    "title": "لوحة التحكم", "subtitle": "حالة نظامك", "refresh": "تحديث",
+    "analyzing": "جارٍ تحليل النظام...", "all_good": "كل شيء يبدو رائعاً!",
+    "fixes_available": "بعض العناصر تحتاج انتباهاً", "fix_all": "إصلاح الكل",
+    "installed": "مثبت", "not_installed": "غير مثبت",
+    "status_ok": "جيد", "status_warning": "تحذير", "status_error": "خطأ",
+    "system_info": "معلومات النظام", "cpu": "المعالج", "ram": "الذاكرة",
+    "disk": "القرص", "os": "نظام التشغيل"
+  },
+  "software_center": {
+    "title": "مركز البرامج", "subtitle": "ثبّت التطبيقات التي تحتاجها",
+    "search_placeholder": "ابحث عن تطبيق...", "all_categories": "جميع الفئات",
+    "install": "تثبيت", "remove": "إزالة", "installed": "مثبت",
+    "installing": "جارٍ التثبيت...", "removing": "جارٍ الإزالة...",
+    "no_results": "لم يتم العثور على نتائج", "via_apt": "عبر APT", "via_flatpak": "عبر Flatpak"
+  },
+  "common": {
+    "yes": "نعم", "no": "لا", "ok": "موافق", "cancel": "إلغاء", "close": "إغلاق",
+    "back": "رجوع", "next": "التالي", "finish": "إنهاء", "error": "خطأ",
+    "warning": "تحذير", "success": "نجاح", "loading": "جارٍ التحميل...",
+    "search": "بحث", "install": "تثبيت", "remove": "إزالة",
+    "update": "تحديث", "refresh": "تحديث", "confirm": "تأكيد",
+    "run": "تشغيل", "copy": "نسخ", "unknown": "غير معروف"
+  },
+  "settings": {
+    "title": "الإعدادات", "language": "اللغة", "theme": "المظهر",
+    "theme_light": "فاتح", "theme_dark": "داكن", "font_size": "حجم الخط",
+    "animations": "الحركات", "terminal_mode": "وضع تعلم الطرفية",
+    "terminal_mode_desc": "عرض شروحات الأوامر لكل عملية",
+    "notifications": "الإشعارات", "notifications_desc": "تلقي إشعارات النظام",
+    "save": "حفظ", "saved": "تم الحفظ", "experience_level": "مستوى الخبرة",
+    "about": "حول", "version": "الإصدار",
+    "about_text": "P4rsInSight تطبيق إدارة نظام مفتوح المصدر لـ TÜBİTAK Pardus."
+  }
+}

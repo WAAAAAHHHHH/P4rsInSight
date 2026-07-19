@@ -1,0 +1,60 @@
+{
+  "app": { "name": "P4rsInSight", "tagline": "Bienvenue sur Pardus Linux" },
+  "nav": {
+    "dashboard": "Tableau de bord", "software_center": "Centre de logiciels",
+    "windows_alternatives": "Alternatives Windows", "profiles": "Profils d'installation",
+    "driver_assistant": "Assistant pilotes", "maintenance": "Maintenance système",
+    "learning_center": "Centre d'apprentissage", "troubleshooting": "Dépannage", "settings": "Paramètres"
+  },
+  "wizard": {
+    "title": "Bienvenue sur P4rsInSight", "subtitle": "Commençons votre voyage Linux ensemble",
+    "step_language": "Langue", "step_theme": "Thème", "step_level": "Niveau d'expérience",
+    "choose_language": "Choisissez votre langue préférée",
+    "choose_theme": "Choisissez votre thème préféré",
+    "choose_level": "Choisissez votre niveau d'expérience",
+    "theme_light": "Thème clair", "theme_dark": "Thème sombre",
+    "level_beginner": "Débutant", "level_beginner_desc": "J'utilise Linux pour la première fois",
+    "level_intermediate": "Intermédiaire", "level_intermediate_desc": "Je connais les commandes de base",
+    "level_advanced": "Avancé", "level_advanced_desc": "Je suis expérimenté, je veux des outils admin",
+    "btn_next": "Suivant", "btn_back": "Retour", "btn_finish": "Commencer", "btn_skip": "Passer"
+  },
+  "dashboard": {
+    "title": "Tableau de bord", "subtitle": "État de votre système", "refresh": "Actualiser",
+    "analyzing": "Analyse du système...", "all_good": "Tout semble parfait!",
+    "fixes_available": "Certains éléments nécessitent attention", "fix_all": "Tout corriger",
+    "card_system_update": "Mises à jour système", "card_gpu_driver": "Pilote GPU",
+    "card_multimedia": "Codecs multimédia", "card_flatpak": "Flatpak",
+    "card_printer": "Pilote imprimante", "updates_available": "{count} mises à jour disponibles",
+    "up_to_date": "À jour", "fix": "Corriger", "install": "Installer",
+    "installed": "Installé", "not_installed": "Non installé",
+    "recommended": "Recommandé", "status_ok": "Bon", "status_warning": "Avertissement", "status_error": "Erreur",
+    "system_info": "Informations système", "cpu": "Processeur", "ram": "Mémoire",
+    "disk": "Disque", "os": "Système d'exploitation"
+  },
+  "software_center": {
+    "title": "Centre de logiciels", "subtitle": "Installez les applications dont vous avez besoin",
+    "search_placeholder": "Rechercher une application...", "all_categories": "Toutes les catégories",
+    "install": "Installer", "remove": "Supprimer", "installed": "Installé",
+    "installing": "Installation...", "removing": "Suppression...",
+    "install_multiple": "Installer la sélection", "selected": "{count} sélectionné(s)",
+    "no_results": "Aucun résultat trouvé", "via_apt": "via APT", "via_flatpak": "via Flatpak"
+  },
+  "common": {
+    "yes": "Oui", "no": "Non", "ok": "OK", "cancel": "Annuler", "close": "Fermer",
+    "back": "Retour", "next": "Suivant", "finish": "Terminer", "error": "Erreur",
+    "warning": "Avertissement", "success": "Succès", "loading": "Chargement...",
+    "search": "Rechercher", "install": "Installer", "remove": "Supprimer",
+    "update": "Mettre à jour", "refresh": "Actualiser", "confirm": "Confirmer",
+    "run": "Exécuter", "copy": "Copier", "unknown": "Inconnu"
+  },
+  "settings": {
+    "title": "Paramètres", "language": "Langue", "theme": "Thème",
+    "theme_light": "Clair", "theme_dark": "Sombre", "font_size": "Taille de police",
+    "animations": "Animations", "terminal_mode": "Mode apprentissage terminal",
+    "terminal_mode_desc": "Afficher les explications de commandes pour chaque opération",
+    "notifications": "Notifications", "notifications_desc": "Recevoir les notifications système",
+    "save": "Enregistrer", "saved": "Enregistré", "experience_level": "Niveau d'expérience",
+    "about": "À propos", "version": "Version",
+    "about_text": "P4rsInSight est une application de gestion système open-source pour TÜBİTAK Pardus."
+  }
+}

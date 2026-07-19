@@ -1,0 +1,261 @@
+{
+  "alternatives": [
+    {
+      "windows_app": "Adobe Photoshop",
+      "description_tr": "Profesyonel fotoğraf düzenleme yazılımı",
+      "description_en": "Professional photo editing software",
+      "alternatives": [
+        {
+          "name": "GIMP",
+          "apt_package": "gimp",
+          "flatpak_id": "org.gimp.GIMP",
+          "install_method": "apt",
+          "description_tr": "Güçlü açık kaynaklı görüntü editörü. Photoshop'un temel özelliklerinin neredeyse tamamına sahiptir.",
+          "description_en": "Powerful open-source image editor with most of Photoshop's core features.",
+          "pros": ["Tamamen ücretsiz", "Açık kaynak", "Geniş eklenti desteği", "Güçlü filtreler"],
+          "cons": ["Photoshop'tan farklı arayüz", "CMYK desteği sınırlı"],
+          "icon": "gimp",
+          "similarity": 80
+        },
+        {
+          "name": "Krita",
+          "apt_package": "krita",
+          "flatpak_id": "org.kde.krita",
+          "install_method": "apt",
+          "description_tr": "Özellikle dijital çizim ve resim için optimize edilmiş uygulama.",
+          "description_en": "Application optimized especially for digital drawing and painting.",
+          "pros": ["Dijital sanat için mükemmel", "Ücretsiz", "Aktif geliştirme"],
+          "cons": ["Fotoğraf düzenleme için GIMP daha iyi"],
+          "icon": "krita",
+          "similarity": 65
+        }
+      ]
+    },
+    {
+      "windows_app": "Microsoft Word",
+      "description_tr": "Microsoft'un kelime işlemci uygulaması",
+      "description_en": "Microsoft's word processor application",
+      "alternatives": [
+        {
+          "name": "LibreOffice Writer",
+          "apt_package": "libreoffice",
+          "flatpak_id": "org.libreoffice.LibreOffice",
+          "install_method": "apt",
+          "description_tr": ".docx formatını tam destekler. Word belgelerini açıp düzenleyebilirsiniz.",
+          "description_en": "Fully supports .docx format. You can open and edit Word documents.",
+          "pros": ["Tamamen ücretsiz", ".docx desteği", "Hızlı", "Güçlü şablon sistemi"],
+          "cons": ["Bazı karmaşık Word makroları çalışmayabilir"],
+          "icon": "libreoffice",
+          "similarity": 90
+        },
+        {
+          "name": "OnlyOffice",
+          "apt_package": "",
+          "flatpak_id": "org.onlyoffice.desktopeditors",
+          "install_method": "flatpak",
+          "description_tr": "Microsoft Office arayüzüne en yakın açık kaynak alternatif.",
+          "description_en": "The open-source alternative closest to the Microsoft Office interface.",
+          "pros": ["Word arayüzüne benzer", "Mükemmel .docx uyumluluğu"],
+          "cons": ["Bazı gelişmiş özellikler eksik"],
+          "icon": "onlyoffice",
+          "similarity": 88
+        }
+      ]
+    },
+    {
+      "windows_app": "Microsoft Excel",
+      "description_tr": "Microsoft'un elektronik tablo uygulaması",
+      "description_en": "Microsoft's spreadsheet application",
+      "alternatives": [
+        {
+          "name": "LibreOffice Calc",
+          "apt_package": "libreoffice",
+          "flatpak_id": "org.libreoffice.LibreOffice",
+          "install_method": "apt",
+          "description_tr": ".xlsx formatını tam destekler. Excel'in neredeyse tüm formüllerini anlayabilir.",
+          "description_en": "Fully supports .xlsx format. Can understand almost all Excel formulas.",
+          "pros": ["Ücretsiz", ".xlsx desteği", "Makro desteği", "Pivot tablo"],
+          "cons": ["Çok karmaşık Excel makroları çalışmayabilir"],
+          "icon": "libreoffice",
+          "similarity": 85
+        }
+      ]
+    },
+    {
+      "windows_app": "Microsoft PowerPoint",
+      "description_tr": "Microsoft'un sunum hazırlama uygulaması",
+      "description_en": "Microsoft's presentation application",
+      "alternatives": [
+        {
+          "name": "LibreOffice Impress",
+          "apt_package": "libreoffice",
+          "flatpak_id": "org.libreoffice.LibreOffice",
+          "install_method": "apt",
+          "description_tr": ".pptx formatını destekler. PowerPoint sunumlarını açıp düzenleyebilirsiniz.",
+          "description_en": "Supports .pptx format. You can open and edit PowerPoint presentations.",
+          "pros": ["Ücretsiz", ".pptx desteği", "Animasyon desteği"],
+          "cons": ["Bazı animasyonlar farklı görünebilir"],
+          "icon": "libreoffice",
+          "similarity": 82
+        }
+      ]
+    },
+    {
+      "windows_app": "Adobe Premiere Pro",
+      "description_tr": "Adobe'nin profesyonel video düzenleme yazılımı",
+      "description_en": "Adobe's professional video editing software",
+      "alternatives": [
+        {
+          "name": "Kdenlive",
+          "apt_package": "kdenlive",
+          "flatpak_id": "org.kde.kdenlive",
+          "install_method": "apt",
+          "description_tr": "Güçlü açık kaynak video editörü. Çoklu parça, efekt ve geçiş desteği.",
+          "description_en": "Powerful open-source video editor. Multi-track, effects, and transition support.",
+          "pros": ["Ücretsiz", "Güçlü özellikler", "Aktif geliştirme", "GPU hızlandırma"],
+          "cons": ["Premiere Pro'dan farklı iş akışı"],
+          "icon": "kdenlive",
+          "similarity": 75
+        },
+        {
+          "name": "DaVinci Resolve",
+          "apt_package": "",
+          "flatpak_id": "",
+          "install_method": "manual",
+          "description_tr": "Profesyonel renk derecelendirme ve video düzenleme. Ücretsiz sürümü oldukça güçlü.",
+          "description_en": "Professional color grading and video editing. The free version is quite powerful.",
+          "pros": ["Profesyonel kalite", "Renk derecelendirme", "Güçlü arayüz"],
+          "cons": ["Yüksek sistem gereksinimleri", "Kurulum daha karmaşık"],
+          "icon": "davinci",
+          "similarity": 85
+        }
+      ]
+    },
+    {
+      "windows_app": "Adobe Illustrator",
+      "description_tr": "Adobe'nin profesyonel vektör grafik editörü",
+      "description_en": "Adobe's professional vector graphics editor",
+      "alternatives": [
+        {
+          "name": "Inkscape",
+          "apt_package": "inkscape",
+          "flatpak_id": "org.inkscape.Inkscape",
+          "install_method": "apt",
+          "description_tr": "Güçlü açık kaynak vektör grafik editörü. SVG standartlarını tam destekler.",
+          "description_en": "Powerful open-source vector graphics editor. Fully supports SVG standards.",
+          "pros": ["Tamamen ücretsiz", "SVG native desteği", "Eklenti ekosistemi"],
+          "cons": ["Illustrator'ın bazı gelişmiş özellikleri yok"],
+          "icon": "inkscape",
+          "similarity": 78
+        }
+      ]
+    },
+    {
+      "windows_app": "Notepad++",
+      "description_tr": "Gelişmiş metin ve kod editörü",
+      "description_en": "Advanced text and code editor",
+      "alternatives": [
+        {
+          "name": "VS Code",
+          "apt_package": "",
+          "flatpak_id": "com.visualstudio.code",
+          "install_method": "flatpak",
+          "description_tr": "Microsoft'un açık kaynak kod editörü. Notepad++'dan çok daha güçlü.",
+          "description_en": "Microsoft's open-source code editor. Much more powerful than Notepad++.",
+          "pros": ["Binlerce eklenti", "IntelliSense", "Git entegrasyonu", "Hata ayıklama"],
+          "cons": ["Daha fazla kaynak kullanır"],
+          "icon": "vscode",
+          "similarity": 80
+        },
+        {
+          "name": "Kate",
+          "apt_package": "kate",
+          "flatpak_id": "org.kde.kate",
+          "install_method": "apt",
+          "description_tr": "KDE'nin güçlü metin editörü. Söz dizimi vurgulaması ve çoklu belge desteği.",
+          "description_en": "KDE's powerful text editor. Syntax highlighting and multi-document support.",
+          "pros": ["Hafif", "Hızlı", "Güçlü söz dizimi vurgulama"],
+          "cons": ["VS Code kadar özellikli değil"],
+          "icon": "kate",
+          "similarity": 85
+        }
+      ]
+    },
+    {
+      "windows_app": "WinRAR",
+      "description_tr": "Dosya sıkıştırma ve arşivleme uygulaması",
+      "description_en": "File compression and archiving application",
+      "alternatives": [
+        {
+          "name": "Ark",
+          "apt_package": "ark",
+          "flatpak_id": "org.kde.ark",
+          "install_method": "apt",
+          "description_tr": "KDE'nin arşiv yöneticisi. RAR, ZIP, TAR ve daha pek çok formatı destekler.",
+          "description_en": "KDE's archive manager. Supports RAR, ZIP, TAR, and many more formats.",
+          "pros": ["Ücretsiz", "Geniş format desteği", "Kolay arayüz"],
+          "cons": ["RAR oluşturma için ek paket gerekebilir"],
+          "icon": "ark",
+          "similarity": 90
+        }
+      ]
+    },
+    {
+      "windows_app": "Paint",
+      "description_tr": "Windows'un basit çizim uygulaması",
+      "description_en": "Windows simple drawing application",
+      "alternatives": [
+        {
+          "name": "KolourPaint",
+          "apt_package": "kolourpaint",
+          "flatpak_id": "org.kde.kolourpaint",
+          "install_method": "apt",
+          "description_tr": "MS Paint'e çok benzeyen, kullanımı kolay basit çizim uygulaması.",
+          "description_en": "Simple drawing application very similar to MS Paint, easy to use.",
+          "pros": ["Arayüz MS Paint'e çok benzer", "Hafif", "Kolay öğrenme"],
+          "cons": ["Sınırlı özellikler"],
+          "icon": "kolourpaint",
+          "similarity": 95
+        }
+      ]
+    },
+    {
+      "windows_app": "Visual Studio",
+      "description_tr": "Microsoft'un geliştirilmiş entegre geliştirme ortamı (IDE)",
+      "description_en": "Microsoft's full-featured integrated development environment (IDE)",
+      "alternatives": [
+        {
+          "name": "VS Code",
+          "apt_package": "",
+          "flatpak_id": "com.visualstudio.code",
+          "install_method": "flatpak",
+          "description_tr": "Microsoft'un açık kaynak hafif kod editörü. Eklentilerle tam IDE'ye dönüşür.",
+          "description_en": "Microsoft's open-source lightweight code editor. Becomes a full IDE with extensions.",
+          "pros": ["Hafif", "Hızlı", "Geniş eklenti ekosistemi", "Microsoft tarafından geliştiriliyor"],
+          "cons": ["Full Visual Studio kadar entegre değil"],
+          "icon": "vscode",
+          "similarity": 75
+        }
+      ]
+    },
+    {
+      "windows_app": "Spotify",
+      "description_tr": "Müzik streaming platformu",
+      "description_en": "Music streaming platform",
+      "alternatives": [
+        {
+          "name": "Spotify (Linux)",
+          "apt_package": "",
+          "flatpak_id": "com.spotify.Client",
+          "install_method": "flatpak",
+          "description_tr": "Spotify'ın resmi Linux uygulaması. Windows versiyonuyla neredeyse aynı.",
+          "description_en": "Spotify's official Linux application. Almost identical to the Windows version.",
+          "pros": ["Resmi uygulama", "Tam özellik seti", "Yüksek ses kalitesi"],
+          "cons": ["Flatpak üzerinden kurulum gerekli"],
+          "icon": "spotify",
+          "similarity": 98
+        }
+      ]
+    }
+  ]
+}

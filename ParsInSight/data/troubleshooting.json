@@ -1,0 +1,235 @@
+{
+  "problems": [
+    {
+      "id": "wifi_not_working",
+      "title_tr": "Wi-Fi Çalışmıyor",
+      "title_en": "Wi-Fi Not Working",
+      "icon": "📶",
+      "description_tr": "Kablosuz ağ bağlantısı yok veya ağ adaptörü tanınmıyor.",
+      "description_en": "No wireless network connection or network adapter not recognized.",
+      "causes_tr": ["Sürücü kurulmamış", "Wi-Fi kapalı", "NetworkManager servisi çalışmıyor", "Uyumsuz donanım"],
+      "causes_en": ["Driver not installed", "Wi-Fi turned off", "NetworkManager service not running", "Incompatible hardware"],
+      "steps": [
+        {
+          "step": 1,
+          "description_tr": "Wi-Fi adaptörünü kontrol edin",
+          "description_en": "Check the Wi-Fi adapter",
+          "command": "lspci | grep -i wireless",
+          "safe": true
+        },
+        {
+          "step": 2,
+          "description_tr": "NetworkManager durumunu kontrol edin",
+          "description_en": "Check NetworkManager status",
+          "command": "systemctl status NetworkManager",
+          "safe": true
+        },
+        {
+          "step": 3,
+          "description_tr": "NetworkManager'i yeniden başlatın",
+          "description_en": "Restart NetworkManager",
+          "command": "sudo systemctl restart NetworkManager",
+          "safe": true
+        },
+        {
+          "step": 4,
+          "description_tr": "Wi-Fi'nin fiziksel olarak açık olduğunu kontrol edin (Fn+F5 gibi tuşlar)",
+          "description_en": "Check that Wi-Fi is physically turned on (keys like Fn+F5)",
+          "command": "rfkill list",
+          "safe": true
+        }
+      ]
+    },
+    {
+      "id": "bluetooth_not_working",
+      "title_tr": "Bluetooth Çalışmıyor",
+      "title_en": "Bluetooth Not Working",
+      "icon": "🔵",
+      "description_tr": "Bluetooth cihazları bulunamıyor veya bağlanılamıyor.",
+      "description_en": "Bluetooth devices cannot be found or connected.",
+      "causes_tr": ["Bluetooth servisi durdu", "Sürücü sorunu", "Donanım anahtarıyla kapatılmış"],
+      "causes_en": ["Bluetooth service stopped", "Driver issue", "Disabled by hardware switch"],
+      "steps": [
+        {
+          "step": 1,
+          "description_tr": "Bluetooth servisini kontrol edin",
+          "description_en": "Check Bluetooth service",
+          "command": "systemctl status bluetooth",
+          "safe": true
+        },
+        {
+          "step": 2,
+          "description_tr": "Bluetooth servisini başlatın",
+          "description_en": "Start Bluetooth service",
+          "command": "sudo systemctl start bluetooth",
+          "safe": true
+        },
+        {
+          "step": 3,
+          "description_tr": "Bluetooth aracını kurun",
+          "description_en": "Install Bluetooth tool",
+          "command": "sudo apt install bluetooth bluez blueman",
+          "safe": true
+        }
+      ]
+    },
+    {
+      "id": "no_sound",
+      "title_tr": "Ses Yok",
+      "title_en": "No Sound",
+      "icon": "🔇",
+      "description_tr": "Bilgisayardan ses gelmiyor veya ses çıkış cihazı bulunamıyor.",
+      "description_en": "No sound from the computer or sound output device not found.",
+      "causes_tr": ["PulseAudio/PipeWire sorunu", "Ses seviyesi sıfır", "Yanlış çıkış cihazı", "Sürücü sorunu"],
+      "causes_en": ["PulseAudio/PipeWire issue", "Volume at zero", "Wrong output device", "Driver issue"],
+      "steps": [
+        {
+          "step": 1,
+          "description_tr": "Ses cihazlarını listeleyin",
+          "description_en": "List audio devices",
+          "command": "aplay -l",
+          "safe": true
+        },
+        {
+          "step": 2,
+          "description_tr": "PulseAudio'yu yeniden başlatın",
+          "description_en": "Restart PulseAudio",
+          "command": "pulseaudio --kill && pulseaudio --start",
+          "safe": true
+        },
+        {
+          "step": 3,
+          "description_tr": "Ses yöneticisini kurun",
+          "description_en": "Install audio manager",
+          "command": "sudo apt install pavucontrol",
+          "safe": true
+        }
+      ]
+    },
+    {
+      "id": "steam_wont_launch",
+      "title_tr": "Steam Açılmıyor",
+      "title_en": "Steam Won't Launch",
+      "icon": "🎮",
+      "description_tr": "Steam uygulaması başlatılamıyor veya hata veriyor.",
+      "description_en": "Steam application cannot be started or gives an error.",
+      "causes_tr": ["32-bit kütüphaneler eksik", "Bağımlılıklar kurulmamış", "Eski Steam versiyonu"],
+      "causes_en": ["32-bit libraries missing", "Dependencies not installed", "Old Steam version"],
+      "steps": [
+        {
+          "step": 1,
+          "description_tr": "32-bit mimarisi etkinleştirin",
+          "description_en": "Enable 32-bit architecture",
+          "command": "sudo dpkg --add-architecture i386",
+          "safe": true
+        },
+        {
+          "step": 2,
+          "description_tr": "Paket listesini güncelleyin",
+          "description_en": "Update package list",
+          "command": "sudo apt update",
+          "safe": true
+        },
+        {
+          "step": 3,
+          "description_tr": "Steam'i yeniden kurun",
+          "description_en": "Reinstall Steam",
+          "command": "sudo apt install --reinstall steam",
+          "safe": true
+        }
+      ]
+    },
+    {
+      "id": "printer_not_detected",
+      "title_tr": "Yazıcı Algılanmıyor",
+      "title_en": "Printer Not Detected",
+      "icon": "🖨️",
+      "description_tr": "Yazıcı bağlandığında tanınmıyor veya baskı alınamıyor.",
+      "description_en": "Printer not recognized when connected or cannot print.",
+      "causes_tr": ["CUPS kurulmamış", "Yazıcı sürücüsü yok", "USB izin sorunu"],
+      "causes_en": ["CUPS not installed", "Printer driver missing", "USB permission issue"],
+      "steps": [
+        {
+          "step": 1,
+          "description_tr": "CUPS yazıcı sistemini kurun",
+          "description_en": "Install CUPS printer system",
+          "command": "sudo apt install cups cups-bsd",
+          "safe": true
+        },
+        {
+          "step": 2,
+          "description_tr": "CUPS servisini başlatın",
+          "description_en": "Start CUPS service",
+          "command": "sudo systemctl start cups",
+          "safe": true
+        },
+        {
+          "step": 3,
+          "description_tr": "Yazıcı yönetim panelini açın",
+          "description_en": "Open printer management panel",
+          "command": "xdg-open http://localhost:631",
+          "safe": true
+        }
+      ]
+    },
+    {
+      "id": "display_resolution",
+      "title_tr": "Ekran Çözünürlüğü Sorunu",
+      "title_en": "Display Resolution Issue",
+      "icon": "🖥️",
+      "description_tr": "Ekran çözünürlüğü doğru ayarlanamıyor veya yalnızca düşük çözünürlükler mevcut.",
+      "description_en": "Screen resolution cannot be set correctly or only low resolutions available.",
+      "causes_tr": ["GPU sürücüsü yüklü değil", "Xrandr ayarları yanlış", "EDID okuma sorunu"],
+      "causes_en": ["GPU driver not installed", "Xrandr settings wrong", "EDID reading issue"],
+      "steps": [
+        {
+          "step": 1,
+          "description_tr": "Mevcut çözünürlükleri listeleyin",
+          "description_en": "List available resolutions",
+          "command": "xrandr",
+          "safe": true
+        },
+        {
+          "step": 2,
+          "description_tr": "GPU bilgisini kontrol edin",
+          "description_en": "Check GPU information",
+          "command": "lspci | grep -i vga",
+          "safe": true
+        }
+      ]
+    },
+    {
+      "id": "package_manager_error",
+      "title_tr": "Paket Yöneticisi Hatası",
+      "title_en": "Package Manager Error",
+      "icon": "📦",
+      "description_tr": "apt komutu hata veriyor veya kilitli kalıyor.",
+      "description_en": "apt command gives error or remains locked.",
+      "causes_tr": ["Başka bir apt işlemi çalışıyor", "Bozuk paket veritabanı", "Kilit dosyası kaldı"],
+      "causes_en": ["Another apt process running", "Corrupt package database", "Lock file remaining"],
+      "steps": [
+        {
+          "step": 1,
+          "description_tr": "Çalışan apt işlemlerini kontrol edin",
+          "description_en": "Check running apt processes",
+          "command": "ps aux | grep apt",
+          "safe": true
+        },
+        {
+          "step": 2,
+          "description_tr": "Kilit dosyalarını kaldırın (dikkatli olun!)",
+          "description_en": "Remove lock files (be careful!)",
+          "command": "sudo rm /var/lib/dpkg/lock-frontend",
+          "safe": false
+        },
+        {
+          "step": 3,
+          "description_tr": "dpkg'yi yeniden yapılandırın",
+          "description_en": "Reconfigure dpkg",
+          "command": "sudo dpkg --configure -a",
+          "safe": true
+        }
+      ]
+    }
+  ]
+}

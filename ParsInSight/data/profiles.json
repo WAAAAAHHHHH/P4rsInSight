@@ -1,0 +1,64 @@
+{
+  "profiles": [
+    {
+      "id": "student",
+      "name_tr": "Öğrenci",
+      "name_en": "Student",
+      "icon": "🎓",
+      "description_tr": "Ders çalışmak, proje yapmak ve araştırma için gerekli tüm uygulamalar.",
+      "description_en": "All applications needed for studying, projects, and research.",
+      "color": "#4CAF50",
+      "packages": ["libreoffice", "firefox", "thunderbird", "gimp", "anki", "geogebra", "git", "python3"]
+    },
+    {
+      "id": "office",
+      "name_tr": "Ofis Çalışanı",
+      "name_en": "Office Worker",
+      "icon": "💼",
+      "description_tr": "Günlük ofis işleri, e-posta, toplantı ve belge yönetimi için ideal paket.",
+      "description_en": "Ideal package for daily office work, email, meetings, and document management.",
+      "color": "#2196F3",
+      "packages": ["libreoffice", "firefox", "thunderbird", "telegram", "onlyoffice"]
+    },
+    {
+      "id": "gamer",
+      "name_tr": "Oyuncu",
+      "name_en": "Gamer",
+      "icon": "🎮",
+      "description_tr": "Steam, Lutris ve diğer araçlarla Linux'ta oyun deneyimini maksimuma çıkar.",
+      "description_en": "Maximize your gaming experience on Linux with Steam, Lutris, and other tools.",
+      "color": "#9C27B0",
+      "packages": ["steam", "lutris", "heroic", "discord", "obs-studio"]
+    },
+    {
+      "id": "developer",
+      "name_tr": "Yazılım Geliştirici",
+      "name_en": "Software Developer",
+      "icon": "💻",
+      "description_tr": "Kod yazmak, proje yönetmek ve versiyon kontrolü için eksiksiz geliştirme ortamı.",
+      "description_en": "Complete development environment for writing code, project management, and version control.",
+      "color": "#FF5722",
+      "packages": ["vscode", "git", "python3", "docker", "firefox", "thunderbird"]
+    },
+    {
+      "id": "graphic_designer",
+      "name_tr": "Grafik Tasarımcı",
+      "name_en": "Graphic Designer",
+      "icon": "🎨",
+      "description_tr": "Profesyonel grafik, fotoğraf ve illüstrasyon işleri için eksiksiz yaratıcı suite.",
+      "description_en": "Complete creative suite for professional graphics, photography, and illustration work.",
+      "color": "#FF9800",
+      "packages": ["gimp", "krita", "inkscape", "blender", "firefox"]
+    },
+    {
+      "id": "content_creator",
+      "name_tr": "İçerik Üreticisi",
+      "name_en": "Content Creator",
+      "icon": "🎬",
+      "description_tr": "YouTube, Twitch veya podcast için video çekme, düzenleme ve yayın araçları.",
+      "description_en": "Video recording, editing, and streaming tools for YouTube, Twitch, or podcasts.",
+      "color": "#F44336",
+      "packages": ["obs-studio", "kdenlive", "gimp", "spotify", "discord", "firefox"]
+    }
+  ]
+}
