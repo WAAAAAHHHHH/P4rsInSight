@@ -238,7 +238,12 @@ class SoftwareCenterPage(QWidget):
                     f"flatpak install -y flathub {flatpak_id}"
                 ]
             else:
-                cmd = ["flatpak", "install", "-y", "flathub", flatpak_id]
+                # Flatpak is installed, but ensure flathub remote is added before installing
+                cmd = [
+                    "bash", "-c",
+                    f"flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo && "
+                    f"flatpak install -y flathub {flatpak_id}"
+                ]
         else:
             pkgs = app.get("apt_package", app["id"]).split()
             cmd = ["sudo", "apt", "install", "-y"] + pkgs
