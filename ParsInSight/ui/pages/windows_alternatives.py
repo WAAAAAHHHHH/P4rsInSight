@@ -83,21 +83,21 @@ class AlternativeCard(Card):
             if pros:
                 pros_col = QVBoxLayout()
                 pros_label = QLabel(f"✅ {i18n.tr('windows_alternatives.pros')}")
-                pros_label.setStyleSheet("font-weight: 600; color: #2E7D32;")
+                pros_label.setStyleSheet("font-weight: 600; color: #52B788;")
                 pros_col.addWidget(pros_label)
                 for p in pros:
-                    l = QLabel(f"  • {p}")
-                    l.setStyleSheet("color: #37474F; font-size: 11px;")
+                    l = QLabel(f"  {p}")
+                    l.setStyleSheet("color: #8080A0; font-size: 11px;")
                     pros_col.addWidget(l)
                 pc_row.addLayout(pros_col)
             if cons:
                 cons_col = QVBoxLayout()
                 cons_label = QLabel(f"❌ {i18n.tr('windows_alternatives.cons')}")
-                cons_label.setStyleSheet("font-weight: 600; color: #C62828;")
+                cons_label.setStyleSheet("font-weight: 600; color: #E63946;")
                 cons_col.addWidget(cons_label)
                 for c in cons:
-                    l = QLabel(f"  • {c}")
-                    l.setStyleSheet("color: #37474F; font-size: 11px;")
+                    l = QLabel(f"  {c}")
+                    l.setStyleSheet("color: #8080A0; font-size: 11px;")
                     cons_col.addWidget(l)
                 pc_row.addLayout(cons_col)
             pc_row.addStretch()
@@ -157,7 +157,7 @@ class WindowsAlternativesPage(QWidget):
 
         # Search bar
         search_bar = QWidget()
-        search_bar.setStyleSheet("background: #FFFFFF; border-bottom: 1px solid #E0E4EE;")
+        search_bar.setStyleSheet("background: transparent; border-bottom: 1px solid #282828;")
         sb_layout = QHBoxLayout(search_bar)
         sb_layout.setContentsMargins(20, 12, 20, 12)
 
@@ -201,7 +201,7 @@ class WindowsAlternativesPage(QWidget):
         if not results:
             no = QLabel(f"🔍  {i18n.tr('windows_alternatives.no_results')}")
             no.setAlignment(Qt.AlignmentFlag.AlignCenter)
-            no.setStyleSheet("color: #78909C; font-size: 16px; padding: 60px;")
+            no.setStyleSheet("color: #50506A; font-size: 15px; padding: 60px;")
             self._layout.addWidget(no)
             return
 

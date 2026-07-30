@@ -84,7 +84,7 @@ class AppCard(Card):
         self.name_label.setObjectName("card_title")
         method = self.app.get("install_method", "apt").upper()
         method_label = QLabel(f"via {method}")
-        method_label.setStyleSheet("color: #78909C; font-size: 10px;")
+        method_label.setStyleSheet("color: #50506A; font-size: 10px;")
         name_col.addWidget(self.name_label)
         name_col.addWidget(method_label)
         header.addLayout(name_col, 1)
@@ -126,7 +126,7 @@ class SoftwareCenterPage(QWidget):
 
         # --- Filter bar ---
         filter_bar = QWidget()
-        filter_bar.setStyleSheet("background: #FFFFFF; border-bottom: 1px solid #E0E4EE; padding: 0;")
+        filter_bar.setStyleSheet("background: transparent; border-bottom: 1px solid #282828; padding: 0;")
         filter_layout = QHBoxLayout(filter_bar)
         filter_layout.setContentsMargins(20, 12, 20, 12)
         filter_layout.setSpacing(12)
@@ -185,7 +185,7 @@ class SoftwareCenterPage(QWidget):
         if not filtered:
             no_results = QLabel(f"🔍  {i18n.tr('software_center.no_results')}")
             no_results.setAlignment(Qt.AlignmentFlag.AlignCenter)
-            no_results.setStyleSheet("color: #78909C; font-size: 16px; padding: 40px;")
+            no_results.setStyleSheet("color: #50506A; font-size: 15px; padding: 40px;")
             self._grid.addWidget(no_results, 0, 0, 1, 3)
             return
 

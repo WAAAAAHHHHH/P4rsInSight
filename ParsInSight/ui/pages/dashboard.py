@@ -79,7 +79,7 @@ class DashboardPage(QWidget):
 
         self._loading_label = QLabel(i18n.tr("dashboard.analyzing"))
         self._loading_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        self._loading_label.setStyleSheet("font-size: 16px; color: #78909C;")
+        self._loading_label.setStyleSheet("font-size: 15px; color: #50506A; font-weight: 500;")
 
         self._progress = QProgressBar()
         self._progress.setRange(0, 0)  # indeterminate
@@ -107,7 +107,7 @@ class DashboardPage(QWidget):
         top_row.addWidget(self._summary_label)
         top_row.addStretch()
 
-        self._refresh_btn = QPushButton(f"🔄  {i18n.tr('dashboard.refresh')}")
+        self._refresh_btn = QPushButton(i18n.tr('dashboard.refresh'))
         self._refresh_btn.setObjectName("btn_secondary")
         self._refresh_btn.clicked.connect(self._start_analysis)
         top_row.addWidget(self._refresh_btn)
@@ -123,10 +123,10 @@ class DashboardPage(QWidget):
         # System info section
         sep = QWidget()
         sep.setFixedHeight(1)
-        sep.setStyleSheet("background: #E0E4EE;")
+        sep.setStyleSheet("background: rgba(255,255,255,0.07); border: none;")
         self._cards_layout.addWidget(sep)
 
-        self._sysinfo_label = QLabel(f"💻  {i18n.tr('dashboard.system_info')}")
+        self._sysinfo_label = QLabel(i18n.tr('dashboard.system_info'))
         self._sysinfo_label.setObjectName("section_title")
         self._cards_layout.addWidget(self._sysinfo_label)
 
@@ -183,7 +183,6 @@ class DashboardPage(QWidget):
         items = [
             {
                 "id": "updates",
-                "icon": "🔄",
                 "title": i18n.tr("dashboard.card_system_update"),
                 "ok": report.updates_available == 0,
                 "desc_ok": i18n.tr("dashboard.up_to_date"),
@@ -192,7 +191,6 @@ class DashboardPage(QWidget):
             },
             {
                 "id": "gpu",
-                "icon": "🎮",
                 "title": i18n.tr("dashboard.card_gpu_driver"),
                 "ok": report.gpu.driver_installed,
                 "desc_ok": f"{report.gpu.brand} — " + i18n.tr("dashboard.installed"),
@@ -201,7 +199,6 @@ class DashboardPage(QWidget):
             },
             {
                 "id": "codecs",
-                "icon": "🎬",
                 "title": i18n.tr("dashboard.card_multimedia"),
                 "ok": report.multimedia_codecs_installed,
                 "desc_ok": i18n.tr("dashboard.installed"),
@@ -210,7 +207,6 @@ class DashboardPage(QWidget):
             },
             {
                 "id": "flatpak",
-                "icon": "📦",
                 "title": i18n.tr("dashboard.card_flatpak"),
                 "ok": report.flatpak_installed,
                 "desc_ok": i18n.tr("dashboard.installed"),
@@ -227,7 +223,7 @@ class DashboardPage(QWidget):
                 issues += 1
 
             card = StatusCard(
-                icon=item["icon"],
+                icon="",
                 title=item["title"],
                 description=item["desc_ok"] if ok else item["desc_warn"],
                 status=status,
@@ -246,9 +242,9 @@ class DashboardPage(QWidget):
             self._grid.addWidget(card, row, col)
 
         if issues == 0:
-            self._summary_label.setText("✅  " + i18n.tr("dashboard.all_good"))
+            self._summary_label.setText(i18n.tr("dashboard.all_good"))
         else:
-            self._summary_label.setText(f"⚠  {issues} " + i18n.tr("dashboard.fixes_available"))
+            self._summary_label.setText(f"{issues} " + i18n.tr("dashboard.fixes_available"))
 
     def _build_system_info(self, report: SystemReport) -> None:
         # Clear previous
@@ -266,7 +262,7 @@ class DashboardPage(QWidget):
 
         for row, (label_text, value_text) in enumerate(info_items):
             lbl = QLabel(label_text)
-            lbl.setStyleSheet("color: #78909C; font-size: 12px;")
+            lbl.setStyleSheet("color: #50506A; font-size: 11px; font-weight: 500;")
             val = QLabel(value_text)
             val.setStyleSheet("font-weight: 600;")
             val.setWordWrap(True)
@@ -310,8 +306,8 @@ class DashboardPage(QWidget):
 
     def _retranslate(self) -> None:
         self._loading_label.setText(i18n.tr("dashboard.analyzing"))
-        self._sysinfo_label.setText(f"💻  {i18n.tr('dashboard.system_info')}")
-        self._refresh_btn.setText(f"🔄  {i18n.tr('dashboard.refresh')}")
+        self._sysinfo_label.setText(i18n.tr('dashboard.system_info'))
+        self._refresh_btn.setText(i18n.tr('dashboard.refresh'))
         if self._report:
             self._build_health_cards(self._report)
             self._build_system_info(self._report)

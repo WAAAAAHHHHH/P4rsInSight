@@ -62,7 +62,7 @@ class TroubleshootingPage(QWidget):
 
         # --- Left: problem list ---
         left = QWidget()
-        left.setStyleSheet("background: #FFFFFF; border-right: 1px solid #E0E4EE;")
+        left.setStyleSheet("background: transparent; border-right: 1px solid #282828;")
         left.setMinimumWidth(200)
         left.setMaximumWidth(260)
         left_layout = QVBoxLayout(left)
@@ -146,7 +146,7 @@ class TroubleshootingPage(QWidget):
             self._detail_layout.addWidget(causes_lbl)
             for c in causes:
                 cl = QLabel(f"  • {c}")
-                cl.setStyleSheet("color: #78909C;")
+                cl.setStyleSheet("color: #8080A0;")
                 self._detail_layout.addWidget(cl)
 
         # Steps
@@ -183,7 +183,7 @@ class TroubleshootingPage(QWidget):
 
                 if cmd:
                     cmd_row = QHBoxLayout()
-                    cmd_lbl = QLabel(f"<code style='background:#F5F7FA;padding:4px 8px;border-radius:6px;font-family:monospace'>{cmd}</code>")
+                    cmd_lbl = QLabel(f"<code style='background:#1E1E1E;padding:4px 8px;border-radius:6px;font-family:monospace'>{cmd}</code>")
                     cmd_lbl.setWordWrap(True)
                     cmd_row.addWidget(cmd_lbl, 1)
 

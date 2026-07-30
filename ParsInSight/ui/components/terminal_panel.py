@@ -67,9 +67,6 @@ class TerminalPanel(QWidget):
 
         self._title_label = QLabel(i18n.tr("terminal_panel.title"))
         self._title_label.setObjectName("terminal_label")
-        self._title_label.setStyleSheet(
-            "font-size: 13px; font-weight: 700; color: #58A6FF;"
-        )
         header.addWidget(self._title_label)
         header.addStretch()
 
@@ -79,9 +76,9 @@ class TerminalPanel(QWidget):
         self._copy_btn.clicked.connect(self._copy_command)
         header.addWidget(self._copy_btn)
 
-        self._close_btn = QPushButton("✕")
+        self._close_btn = QPushButton("×")
         self._close_btn.setObjectName("btn_secondary")
-        self._close_btn.setFixedSize(28, 28)
+        self._close_btn.setFixedSize(24, 24)
         self._close_btn.clicked.connect(self.hide)
         header.addWidget(self._close_btn)
 
@@ -108,7 +105,7 @@ class TerminalPanel(QWidget):
         self._explanation = QLabel("")
         self._explanation.setWordWrap(True)
         self._explanation.setStyleSheet(
-            "color: #8B949E; font-size: 11px; background: transparent;"
+            "color: #80809A; font-size: 11px; background: transparent;"
         )
         outer.addWidget(self._explanation)
 

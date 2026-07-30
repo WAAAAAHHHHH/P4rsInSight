@@ -1,6 +1,7 @@
 """
 P4rsInSight - Sidebar Navigation Widget
-Left navigation bar with text-only nav items, active state highlight and left accent border.
+Minimal left navigation bar. No emojis — clean text labels with
+left-border active indicator and pinned settings at the bottom.
 """
 
 from __future__ import annotations
@@ -18,17 +19,21 @@ from PySide6.QtWidgets import (
 from core.i18n_manager import i18n
 
 
-# Nav items — label_short is a 2-char uppercase abbreviation used as a visual icon
+# Primary nav items
 NAV_ITEMS: list[dict] = [
-    {"id": "dashboard",             "abbr": "DB", "key": "nav.dashboard"},
-    {"id": "software_center",       "abbr": "SW", "key": "nav.software_center"},
-    {"id": "windows_alternatives",  "abbr": "WA", "key": "nav.windows_alternatives"},
-    {"id": "profiles",              "abbr": "PR", "key": "nav.profiles"},
-    {"id": "driver_assistant",      "abbr": "DV", "key": "nav.driver_assistant"},
-    {"id": "maintenance",           "abbr": "MT", "key": "nav.maintenance"},
-    {"id": "learning_center",       "abbr": "LC", "key": "nav.learning_center"},
-    {"id": "troubleshooting",       "abbr": "TS", "key": "nav.troubleshooting"},
-    {"id": "settings",              "abbr": "ST", "key": "nav.settings"},
+    {"id": "dashboard",             "key": "nav.dashboard"},
+    {"id": "software_center",       "key": "nav.software_center"},
+    {"id": "windows_alternatives",  "key": "nav.windows_alternatives"},
+    {"id": "profiles",              "key": "nav.profiles"},
+    {"id": "driver_assistant",      "key": "nav.driver_assistant"},
+    {"id": "maintenance",           "key": "nav.maintenance"},
+    {"id": "learning_center",       "key": "nav.learning_center"},
+    {"id": "troubleshooting",       "key": "nav.troubleshooting"},
+]
+
+# Pinned at the bottom
+BOTTOM_ITEMS: list[dict] = [
+    {"id": "settings", "key": "nav.settings"},
 ]
 
 
@@ -57,13 +62,13 @@ class Sidebar(QWidget):
         outer.setContentsMargins(0, 0, 0, 0)
         outer.setSpacing(0)
 
-        # --- Logo area ---
+        # ── Logo area ──────────────────────────────────────────────────
         logo_area = QWidget()
         logo_area.setObjectName("sidebar_logo_area")
-        logo_area.setFixedHeight(86)
+        logo_area.setFixedHeight(68)
         logo_layout = QVBoxLayout(logo_area)
-        logo_layout.setContentsMargins(18, 16, 18, 16)
-        logo_layout.setSpacing(3)
+        logo_layout.setContentsMargins(18, 14, 18, 14)
+        logo_layout.setSpacing(2)
 
         self._app_name = QLabel("P4rsInSight")
         self._app_name.setObjectName("sidebar_app_name")
@@ -76,13 +81,14 @@ class Sidebar(QWidget):
         logo_layout.addWidget(self._tagline)
         outer.addWidget(logo_area)
 
-        # --- Divider ---
-        div = QWidget()
+        # ── Thin divider ───────────────────────────────────────────────
+        div = QFrame()
+        div.setFrameShape(QFrame.Shape.HLine)
         div.setFixedHeight(1)
-        div.setStyleSheet("background: rgba(255,255,255,0.15);")
+        div.setStyleSheet("background: rgba(255,255,255,0.07); border: none;")
         outer.addWidget(div)
 
-        # --- Scrollable nav area ---
+        # ── Scrollable nav area ────────────────────────────────────────
         scroll = QScrollArea()
         scroll.setWidgetResizable(True)
         scroll.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
@@ -91,24 +97,55 @@ class Sidebar(QWidget):
 
         nav_widget = QWidget()
         self._nav_layout = QVBoxLayout(nav_widget)
-        self._nav_layout.setContentsMargins(0, 10, 0, 10)
-        self._nav_layout.setSpacing(2)
+        self._nav_layout.setContentsMargins(0, 6, 0, 6)
+        self._nav_layout.setSpacing(0)
         self._nav_layout.setAlignment(Qt.AlignmentFlag.AlignTop)
 
-        self._build_nav_items()
+        # Section label
+        nav_lbl = QLabel("NAVIGATION")
+        nav_lbl.setStyleSheet(
+            "color: rgba(255,255,255,0.18); font-size: 9px; "
+            "font-weight: 700; letter-spacing: 1.0px; "
+            "padding: 10px 18px 4px 18px;"
+        )
+        self._nav_layout.addWidget(nav_lbl)
+
+        self._build_nav_items(NAV_ITEMS)
 
         scroll.setWidget(nav_widget)
         outer.addWidget(scroll, 1)
 
-        # --- Version footer ---
-        footer = QLabel("v 1.0.0")
-        footer.setObjectName("sidebar_tagline")
-        footer.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        footer.setContentsMargins(0, 8, 0, 12)
-        outer.addWidget(footer)
+        # ── Bottom divider ─────────────────────────────────────────────
+        div2 = QFrame()
+        div2.setFrameShape(QFrame.Shape.HLine)
+        div2.setFixedHeight(1)
+        div2.setStyleSheet("background: rgba(255,255,255,0.07); border: none;")
+        outer.addWidget(div2)
 
-    def _build_nav_items(self) -> None:
-        for item in NAV_ITEMS:
+        # ── Pinned bottom section (Settings) ───────────────────────────
+        bottom_widget = QWidget()
+        bottom_layout = QVBoxLayout(bottom_widget)
+        bottom_layout.setContentsMargins(0, 4, 0, 0)
+        bottom_layout.setSpacing(0)
+
+        self._build_nav_items(BOTTOM_ITEMS, layout=bottom_layout)
+
+        # Version
+        ver = QLabel("v 1.0.0")
+        ver.setObjectName("sidebar_tagline")
+        ver.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        ver.setContentsMargins(0, 6, 0, 10)
+        bottom_layout.addWidget(ver)
+
+        outer.addWidget(bottom_widget)
+
+    def _build_nav_items(
+        self,
+        items: list[dict],
+        layout: QVBoxLayout | None = None,
+    ) -> None:
+        target = layout if layout is not None else self._nav_layout
+        for item in items:
             label = i18n.tr(item["key"])
             btn = QPushButton(label)
             btn.setObjectName("sidebar_item")
@@ -117,10 +154,12 @@ class Sidebar(QWidget):
             btn.setToolTip(label)
 
             page_id = item["id"]
-            btn.clicked.connect(lambda checked=False, pid=page_id: self._on_nav_click(pid))
+            btn.clicked.connect(
+                lambda checked=False, pid=page_id: self._on_nav_click(pid)
+            )
 
             self._buttons[page_id] = btn
-            self._nav_layout.addWidget(btn)
+            target.addWidget(btn)
 
         self._update_active()
 
@@ -144,7 +183,8 @@ class Sidebar(QWidget):
     def _retranslate(self) -> None:
         """Update all text after language change."""
         self._tagline.setText(i18n.tr("app.tagline"))
-        for item in NAV_ITEMS:
+        all_items = NAV_ITEMS + BOTTOM_ITEMS
+        for item in all_items:
             if item["id"] in self._buttons:
                 label = i18n.tr(item["key"])
                 btn = self._buttons[item["id"]]

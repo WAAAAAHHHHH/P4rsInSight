@@ -62,9 +62,9 @@ class DriverAssistantPage(QWidget):
         self._layout.setSpacing(16)
 
         # Loading state
-        self._loading = QLabel(f"🔍  {i18n.tr('driver_assistant.scanning')}")
+        self._loading = QLabel(i18n.tr('driver_assistant.scanning'))
         self._loading.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        self._loading.setStyleSheet("font-size: 16px; color: #78909C; padding: 60px;")
+        self._loading.setStyleSheet("font-size: 15px; color: #50506A; font-weight: 500; padding: 60px;")
         self._layout.addWidget(self._loading)
 
         # Cards container

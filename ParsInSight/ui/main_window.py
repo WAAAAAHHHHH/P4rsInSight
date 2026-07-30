@@ -35,7 +35,6 @@ from ui.pages.software_center import SoftwareCenterPage
 from ui.pages.troubleshooting import TroubleshootingPage
 from ui.pages.windows_alternatives import WindowsAlternativesPage
 from ui.styles.dark_theme import get_dark_stylesheet
-from ui.styles.light_theme import get_light_stylesheet
 
 log = get_logger("main_window")
 
@@ -82,11 +81,10 @@ class MainWindow(QMainWindow):
         self.resize(1280, 800)
 
         self._setup_ui()
-        self._apply_theme(settings.theme)
+        self._apply_theme()
         self._navigate("dashboard")
 
         # Connect settings signals
-        settings.theme_changed.connect(self._apply_theme)
         i18n.language_changed.connect(self._retranslate)
 
     # ------------------------------------------------------------------
@@ -152,16 +150,11 @@ class MainWindow(QMainWindow):
         title_col.addWidget(self._page_subtitle)
         layout.addLayout(title_col, 1)
 
-        # Theme toggle
-        self._theme_btn = QPushButton("🌙  Dark" if settings.theme == "light" else "☀️  Light")
-        self._theme_btn.setObjectName("theme_toggle")
-        self._theme_btn.clicked.connect(self._toggle_theme)
-        layout.addWidget(self._theme_btn)
-
-        # Terminal mode toggle
-        self._term_btn = QPushButton("💻  Terminal")
-        self._term_btn.setObjectName("btn_secondary")
-        self._term_btn.setFixedHeight(32)
+        # Terminal toggle button
+        self._term_btn = QPushButton("Terminal")
+        self._term_btn.setObjectName("terminal_toggle")
+        self._term_btn.setCheckable(True)
+        self._term_btn.setChecked(False)
         self._term_btn.clicked.connect(self._toggle_terminal)
         layout.addWidget(self._term_btn)
 
@@ -187,7 +180,6 @@ class MainWindow(QMainWindow):
 
     def _build_settings_page(self) -> SettingsPage:
         page = SettingsPage()
-        page.theme_changed.connect(self._apply_theme)
         page.font_size_changed.connect(self._apply_font_size)
         return page
 
@@ -215,31 +207,19 @@ class MainWindow(QMainWindow):
     # Theme & Styling
     # ------------------------------------------------------------------
 
-    def _apply_theme(self, theme: str) -> None:
-        if theme == "dark":
-            stylesheet = get_dark_stylesheet(settings.font_size)
-            self._theme_btn.setText("☀️  Light")
-        else:
-            stylesheet = get_light_stylesheet(settings.font_size)
-            self._theme_btn.setText("🌙  Dark")
+    def _apply_theme(self) -> None:
+        stylesheet = get_dark_stylesheet(settings.font_size)
         QApplication.instance().setStyleSheet(stylesheet)
-        settings.set("theme", theme)
-        log.debug("Theme applied: %s", theme)
+        log.debug("Theme applied: dark")
 
     def _apply_font_size(self, size: int) -> None:
-        theme = settings.theme
-        if theme == "dark":
-            stylesheet = get_dark_stylesheet(size)
-        else:
-            stylesheet = get_light_stylesheet(size)
+        stylesheet = get_dark_stylesheet(size)
         QApplication.instance().setStyleSheet(stylesheet)
 
-    def _toggle_theme(self) -> None:
-        new_theme = "dark" if settings.theme == "light" else "light"
-        self._apply_theme(new_theme)
-
     def _toggle_terminal(self) -> None:
-        self._terminal.setVisible(not self._terminal.isVisible())
+        visible = not self._terminal.isVisible()
+        self._terminal.setVisible(visible)
+        self._term_btn.setChecked(visible)
 
     # ------------------------------------------------------------------
     # i18n

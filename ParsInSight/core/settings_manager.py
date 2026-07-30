@@ -18,7 +18,6 @@ log = get_logger("settings_manager")
 
 _DEFAULTS: dict[str, Any] = {
     "language": "tr",
-    "theme": "light",
     "font_size": 13,
     "animations_enabled": True,
     "terminal_learning_mode": True,
@@ -42,13 +41,10 @@ class SettingsManager(QObject):
         Emitted whenever a setting is updated.
     language_changed(language_code)
         Emitted specifically when the language setting changes.
-    theme_changed(theme_name)
-        Emitted specifically when the theme setting changes.
     """
 
     setting_changed = Signal(str, object)
     language_changed = Signal(str)
-    theme_changed = Signal(str)
 
     def __init__(self) -> None:
         super().__init__()
@@ -97,8 +93,6 @@ class SettingsManager(QObject):
         self.setting_changed.emit(key, value)
         if key == "language":
             self.language_changed.emit(str(value))
-        elif key == "theme":
-            self.theme_changed.emit(str(value))
 
     # Typed convenience properties -------------------------------------------
 
@@ -110,13 +104,7 @@ class SettingsManager(QObject):
     def language(self, value: str) -> None:
         self.set("language", value)
 
-    @property
-    def theme(self) -> str:
-        return str(self._data.get("theme", "light"))
 
-    @theme.setter
-    def theme(self, value: str) -> None:
-        self.set("theme", value)
 
     @property
     def font_size(self) -> int:

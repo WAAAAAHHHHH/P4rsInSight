@@ -67,7 +67,7 @@ class SettingsGroup(QWidget):
         label_col.addWidget(lbl)
         if description:
             desc = QLabel(description)
-            desc.setStyleSheet("color: #78909C; font-size: 11px;")
+            desc.setStyleSheet("color: #50506A; font-size: 11px;")
             desc.setWordWrap(True)
             label_col.addWidget(desc)
 
@@ -81,8 +81,7 @@ class SettingsGroup(QWidget):
 class SettingsPage(QWidget):
     """Settings configuration page with live preview."""
 
-    # Emitted when theme changes so MainWindow can apply the stylesheet
-    theme_changed = Signal(str)
+    # Emitted when font size changes
     font_size_changed = Signal(int)
 
     def __init__(self, parent=None) -> None:
@@ -119,15 +118,7 @@ class SettingsPage(QWidget):
         self._content_layout.addWidget(self._lang_group)
 
         # --- Appearance group ---
-        self._appearance_group = SettingsGroup(i18n.tr("settings.theme"))
-
-        # Theme toggle
-        self._theme_combo = QComboBox()
-        self._theme_combo.addItem(f"☀️  {i18n.tr('settings.theme_light')}", "light")
-        self._theme_combo.addItem(f"🌙  {i18n.tr('settings.theme_dark')}", "dark")
-        self._theme_combo.setCurrentIndex(0 if settings.theme == "light" else 1)
-        self._theme_combo.currentIndexChanged.connect(self._on_theme_change)
-        self._theme_row = self._appearance_group.add_row(i18n.tr("settings.theme"), self._theme_combo)
+        self._appearance_group = SettingsGroup(i18n.tr("settings.font_size"))
 
         # Font size
         font_row_widget = QWidget()
@@ -219,11 +210,7 @@ class SettingsPage(QWidget):
             settings.language = lang
             i18n.set_language(lang)
 
-    def _on_theme_change(self, index: int) -> None:
-        theme = self._theme_combo.itemData(index)
-        if theme:
-            settings.theme = theme
-            self.theme_changed.emit(theme)
+
 
     def _on_font_size_change(self, value: int) -> None:
         self._font_value_label.setText(f"{value}px")

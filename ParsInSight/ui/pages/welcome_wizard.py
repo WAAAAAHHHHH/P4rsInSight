@@ -2,8 +2,7 @@
 P4rsInSight - Welcome Wizard
 Multi-step first-launch dialog:
   Step 1: Language selection
-  Step 2: Theme selection
-  Step 3: Experience level selection
+  Step 2: Experience level selection
 """
 
 from __future__ import annotations
@@ -27,18 +26,21 @@ from core.i18n_manager import SUPPORTED_LANGUAGES, i18n
 from core.settings_manager import settings
 
 
+
 class WelcomeWizard(QDialog):
     """
     First-launch setup wizard.
 
     Signals
     -------
-    setup_complete(language, theme, level)
+    setup_complete(language, level)
     """
 
-    setup_complete = Signal(str, str, str)
+    setup_complete = Signal(str, str)
+
 
     def __init__(self, parent: QWidget | None = None) -> None:
+
         super().__init__(parent)
         self.setWindowTitle("P4rsInSight – Setup")
         self.setModal(True)
@@ -49,7 +51,6 @@ class WelcomeWizard(QDialog):
         )
 
         self._selected_lang  = settings.language
-        self._selected_theme = settings.theme
         self._selected_level = settings.experience_level
 
         self._setup_ui()
@@ -61,7 +62,7 @@ class WelcomeWizard(QDialog):
 
         # --- Header ---
         header = QWidget()
-        header.setStyleSheet("background-color: #1565C0; padding: 28px 36px;")
+        header.setStyleSheet("background-color: #1A1A1A; padding: 28px 36px;")
         header_layout = QVBoxLayout(header)
         header_layout.setContentsMargins(36, 28, 36, 28)
         header_layout.setSpacing(6)
@@ -80,7 +81,7 @@ class WelcomeWizard(QDialog):
 
         # --- Step indicators ---
         steps_bar = QWidget()
-        steps_bar.setStyleSheet("background: #F5F7FA; padding: 12px 36px; border-bottom: 1px solid #E0E4EE;")
+        steps_bar.setStyleSheet("background: #1E1E1E; padding: 12px 36px; border-bottom: 1px solid #282828;")
         steps_layout = QHBoxLayout(steps_bar)
         steps_layout.setContentsMargins(36, 10, 36, 10)
         steps_layout.setSpacing(8)
@@ -89,7 +90,6 @@ class WelcomeWizard(QDialog):
         self._step_indicators: list[QPushButton] = []
         step_labels = [
             i18n.tr("wizard.step_language"),
-            i18n.tr("wizard.step_theme"),
             i18n.tr("wizard.step_level"),
         ]
         for i, label in enumerate(step_labels):
@@ -101,7 +101,7 @@ class WelcomeWizard(QDialog):
             steps_layout.addWidget(indicator)
 
             step_lbl = QLabel(label)
-            step_lbl.setStyleSheet("color: #546E7A; font-size: 12px; background: transparent;")
+            step_lbl.setStyleSheet("color: rgba(255,255,255,0.40); font-size: 11px; background: transparent;")
             steps_layout.addWidget(step_lbl)
 
             if i < len(step_labels) - 1:
@@ -115,13 +115,12 @@ class WelcomeWizard(QDialog):
         # --- Stacked pages ---
         self._stack = QStackedWidget()
         self._stack.addWidget(self._build_language_page())
-        self._stack.addWidget(self._build_theme_page())
         self._stack.addWidget(self._build_level_page())
         root.addWidget(self._stack, 1)
 
         # --- Bottom buttons ---
         btn_bar = QWidget()
-        btn_bar.setStyleSheet("background: #FFFFFF; border-top: 1px solid #E0E4EE; padding: 16px 36px;")
+        btn_bar.setStyleSheet("background: #1A1A1A; border-top: 1px solid #282828; padding: 16px 36px;")
         btn_layout = QHBoxLayout(btn_bar)
         btn_layout.setContentsMargins(36, 12, 36, 12)
 
@@ -185,42 +184,7 @@ class WelcomeWizard(QDialog):
         layout.addWidget(scroll, 1)
         return page
 
-    def _build_theme_page(self) -> QWidget:
-        page = QWidget()
-        layout = QVBoxLayout(page)
-        layout.setContentsMargins(36, 24, 36, 24)
-        layout.setSpacing(16)
 
-        title = QLabel(i18n.tr("wizard.choose_theme"))
-        title.setObjectName("section_title")
-        layout.addWidget(title)
-
-        row = QHBoxLayout()
-        row.setSpacing(16)
-        self._theme_group = QButtonGroup(self)
-
-        light_card = self._make_choice_card(
-            "☀️  " + i18n.tr("wizard.theme_light"),
-            i18n.tr("settings.theme_light"),
-            self._theme_group, "light"
-        )
-        dark_card = self._make_choice_card(
-            "🌙  " + i18n.tr("wizard.theme_dark"),
-            i18n.tr("settings.theme_dark"),
-            self._theme_group, "dark"
-        )
-        row.addWidget(light_card)
-        row.addWidget(dark_card)
-        row.addStretch()
-
-        for card in [light_card, dark_card]:
-            for child in card.findChildren(QRadioButton):
-                if child.property("value") == self._selected_theme:
-                    child.setChecked(True)
-
-        layout.addLayout(row)
-        layout.addStretch()
-        return page
 
     def _build_level_page(self) -> QWidget:
         page = QWidget()
@@ -283,7 +247,7 @@ class WelcomeWizard(QDialog):
         if description:
             desc = QLabel(description)
             desc.setWordWrap(True)
-            desc.setStyleSheet("color: #78909C; font-size: 11px;")
+            desc.setStyleSheet("color: #50506A; font-size: 11px;")
             layout.addWidget(desc)
 
         return card
@@ -304,10 +268,6 @@ class WelcomeWizard(QDialog):
                 self._selected_lang = btn.property("value")
                 i18n.set_language(self._selected_lang)
         elif step == 1:
-            btn = self._theme_group.checkedButton()
-            if btn:
-                self._selected_theme = btn.property("value")
-        elif step == 2:
             btn = self._level_group.checkedButton()
             if btn:
                 self._selected_level = btn.property("value")
@@ -319,7 +279,7 @@ class WelcomeWizard(QDialog):
         self._back_btn.setVisible(True)
         self._update_step_indicators(next_step)
 
-        if next_step == 2:
+        if next_step == 1:
             self._next_btn.setText(i18n.tr("wizard.btn_finish"))
         else:
             self._next_btn.setText(i18n.tr("wizard.btn_next"))
@@ -339,13 +299,11 @@ class WelcomeWizard(QDialog):
 
     def _finish(self) -> None:
         settings.language       = self._selected_lang
-        settings.theme          = self._selected_theme
         settings.set("experience_level", self._selected_level)
         settings.first_launch   = False
         i18n.set_language(self._selected_lang)
         self.setup_complete.emit(
             self._selected_lang,
-            self._selected_theme,
             self._selected_level,
         )
         self.accept()

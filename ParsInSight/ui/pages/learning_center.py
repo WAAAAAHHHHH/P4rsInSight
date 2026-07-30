@@ -49,7 +49,7 @@ def _markdown_to_html(text: str) -> str:
                 html_lines.append("</pre></code>")
                 in_code = False
             else:
-                html_lines.append("<code><pre style='background:#F5F7FA;padding:12px;border-radius:8px;'>")
+                html_lines.append("<code><pre style='background:#1E1E1E;padding:12px;border-radius:8px;'>")
                 in_code = True
             continue
         if in_code:
@@ -57,9 +57,9 @@ def _markdown_to_html(text: str) -> str:
             continue
         # Headers
         if line.startswith("# "):
-            html_lines.append(f"<h1 style='color:#1565C0'>{line[2:]}</h1>")
+            html_lines.append(f"<h1 style='color:#FFFFFF'>{line[2:]}</h1>")
         elif line.startswith("## "):
-            html_lines.append(f"<h2 style='color:#1565C0'>{line[3:]}</h2>")
+            html_lines.append(f"<h2 style='color:#FFFFFF'>{line[3:]}</h2>")
         elif line.startswith("### "):
             html_lines.append(f"<h3>{line[4:]}</h3>")
         elif line.startswith("- ") or line.startswith("* "):
@@ -71,15 +71,15 @@ def _markdown_to_html(text: str) -> str:
             cells = [c.strip() for c in line.strip().strip("|").split("|")]
             if "---" in line:
                 continue  # Skip separator
-            html_lines.append("<tr>" + "".join(f"<td style='padding:6px 12px;border:1px solid #E0E4EE'>{c}</td>" for c in cells) + "</tr>")
+            html_lines.append("<tr>" + "".join(f"<td style='padding:6px 12px;border:1px solid #333333'>{c}</td>" for c in cells) + "</tr>")
         else:
             # Bold, inline code
             line = re.sub(r"\*\*(.+?)\*\*", r"<b>\1</b>", line)
-            line = re.sub(r"`(.+?)`", r"<code style='background:#F0F4FF;padding:2px 6px;border-radius:4px'>\1</code>", line)
+            line = re.sub(r"`(.+?)`", r"<code style='background:#2A2A2A;padding:2px 6px;border-radius:4px'>\1</code>", line)
             line = re.sub(r"\[(.+?)\]\((.+?)\)", r"<a href='\2'>\1</a>", line)
             html_lines.append(f"<p style='margin:4px 0;line-height:1.6'>{line}</p>")
 
-    return "<html><body style='font-family:Segoe UI,Ubuntu,sans-serif;font-size:13px;padding:8px'>" + "\n".join(html_lines) + "</body></html>"
+    return "<html><body style='font-family:Segoe UI,Ubuntu,sans-serif;font-size:13px;padding:8px;color:#E0E0E0;'>" + "\n".join(html_lines) + "</body></html>"
 
 
 class LearningCenterPage(QWidget):
@@ -101,7 +101,7 @@ class LearningCenterPage(QWidget):
 
         # --- Left: topic list ---
         left = QWidget()
-        left.setStyleSheet("background: #FFFFFF; border-right: 1px solid #E0E4EE;")
+        left.setStyleSheet("background: transparent; border-right: 1px solid #282828;")
         left.setMinimumWidth(200)
         left.setMaximumWidth(260)
         left_layout = QVBoxLayout(left)

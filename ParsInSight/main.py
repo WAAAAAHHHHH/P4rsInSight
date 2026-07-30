@@ -43,21 +43,17 @@ def main() -> int:
     log.info("Language set to: %s", settings.language)
 
     # ── 4. Apply initial stylesheet ───────────────────────────────────
-    from ui.styles.light_theme import get_light_stylesheet
     from ui.styles.dark_theme import get_dark_stylesheet
 
-    if settings.theme == "dark":
-        app.setStyleSheet(get_dark_stylesheet(settings.font_size))
-    else:
-        app.setStyleSheet(get_light_stylesheet(settings.font_size))
-    log.info("Theme applied: %s", settings.theme)
+    app.setStyleSheet(get_dark_stylesheet(settings.font_size))
+    log.info("Theme applied: dark")
 
     # ── 5. Show first-launch wizard if needed ─────────────────────────
     if settings.first_launch:
         from ui.pages.welcome_wizard import WelcomeWizard
         wizard = WelcomeWizard()
         wizard.setup_complete.connect(
-            lambda lang, theme, level: _on_wizard_complete(app, lang, theme, level)
+            lambda lang, level: _on_wizard_complete(app, lang, level)
         )
         result = wizard.exec()
         log.info("Wizard completed with result: %s", result)
@@ -72,17 +68,13 @@ def main() -> int:
 
 
 def _on_wizard_complete(
-    app: QApplication, lang: str, theme: str, level: str
+    app: QApplication, lang: str, level: str
 ) -> None:
     """Apply wizard choices before main window opens."""
-    from ui.styles.light_theme import get_light_stylesheet
     from ui.styles.dark_theme import get_dark_stylesheet
 
     i18n.set_language(lang)
-    if theme == "dark":
-        app.setStyleSheet(get_dark_stylesheet(settings.font_size))
-    else:
-        app.setStyleSheet(get_light_stylesheet(settings.font_size))
+    app.setStyleSheet(get_dark_stylesheet(settings.font_size))
 
 
 if __name__ == "__main__":

@@ -57,9 +57,10 @@ class StatusCard(Card):
         top_row.setSpacing(10)
 
         icon_label = QLabel(icon)
-        icon_label.setStyleSheet("font-size: 22px; background: transparent;")
-        icon_label.setFixedWidth(30)
-        top_row.addWidget(icon_label)
+        icon_label.setStyleSheet("font-size: 18px; background: transparent;")
+        icon_label.setFixedWidth(28)
+        if icon:
+            top_row.addWidget(icon_label)
 
         self.title_label = QLabel(title)
         self.title_label.setObjectName("card_title")
