@@ -23,6 +23,27 @@ pip install -r requirements.txt
 python main.py
 ```
 
+### 🛠️ Tek Başına Çalıştırılabilir Dosya Oluşturma / Building Standalone Executable
+Uygulamayı tek bir çalıştırılabilir dosya (Windows'ta `.exe`, Linux'ta binary) haline getirmek için **PyInstaller** kullanılır. Proje dizininde yer alan `ParsInSight.spec` dosyası tüm derleme yapılandırmasını içerir.
+
+1. **PyInstaller'ı kurun / Install PyInstaller:**
+   ```bash
+   pip install pyinstaller
+   ```
+
+2. **Derleme işlemini başlatın / Start the build process:**
+   ```bash
+   # ParsInSight dizinine geçin
+   cd ParsInSight
+   
+   # PyInstaller'ı spec dosyası ile çalıştırın
+   pyinstaller ParsInSight.spec
+   ```
+
+3. **Derleme çıktıları / Build outputs:**
+   * **`dist/`**: Derlenmiş tek başına çalışan executable dosyayı (`ParsInSight` veya `ParsInSight.exe`) içerir.
+   * **`build/`**: Derleme sırasında kullanılan geçici nesneleri ve logları içerir.
+
 ---
 
 ## 📸 Ekran Görüntüleri / Screenshots
