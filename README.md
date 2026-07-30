@@ -440,3 +440,39 @@ assets/
 ## 📜 Lisans / License
 
 GPL-3.0 — TÜBİTAK Pardus için geliştirilmiştir.
+
+---
+
+## 📦 Dağıtım ve Taşınabilir Çalıştırma (Sıfır Terminal) / Standalone Distribution (Zero Terminal)
+
+Linux/Pardus kullanıcılarının terminal komutlarıyla uğraşmadan, uygulamayı doğrudan çift tıklayarak çalıştırabilmesi için taşınabilir (standalone) binary oluşturma ve dağıtma adımları:
+
+### 1. Geliştirici İçin: Derleme ve Paketleme / For Developers: Build & Package
+
+Uygulamayı son kullanıcılar için dağıtıma hazır hale getirmek amacıyla Pardus terminalinizde şu komutları çalıştırın:
+
+```bash
+# 1. Sanal ortamı aktif edin ve PyInstaller'ı kurun
+source .venv/bin/activate
+pip install pyinstaller
+
+# 2. PyInstaller ile uygulamayı derleyin
+cd ParsInSight
+pyinstaller --clean ParsInSight.spec
+cd ..
+
+# 3. Oluşan ParsInSight dosyasını çalıştırma izinleri korunacak şekilde .tar.gz formatında paketleyin
+cd ParsInSight/dist
+tar -czvf ParsInSight_Linux.tar.gz ParsInSight
+```
+Oluşan `ParsInSight_Linux.tar.gz` dosyasını GitHub deponuzda **Releases** bölümüne yükleyebilirsiniz.
+
+### 2. Son Kullanıcı İçin: Kurulum ve Çalıştırma / For End Users: Run the App (Zero Terminal)
+
+Herhangi bir Linux (Pardus) kullanıcısının terminal kullanmadan uygulamayı çalıştırma adımları:
+
+1. GitHub Releases sayfasından **`ParsInSight_Linux.tar.gz`** dosyasını indirin.
+2. İndirilen dosyaya çift tıklayarak arayüz üzerinden arşivden çıkarın (klasöre çıkartın).
+3. Çıkan klasör içindeki **`ParsInSight`** program simgesine çift tıklayın.
+4. Uygulama başka hiçbir bağımlılığa gerek kalmadan doğrudan açılacaktır!
+
