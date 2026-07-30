@@ -54,10 +54,6 @@ QMainWindow, QDialog {{
     background-color: {BG_DEEP};
 }}
 
-QWidget {{
-    background-color: transparent;
-}}
-
 /* ═══════════════════════════════════════════════
    SCROLLBARS — ultra minimal
 ═══════════════════════════════════════════════ */
@@ -141,6 +137,7 @@ QPushButton#sidebar_item {{
     font-size: {fs_sm}px;
     font-weight: 400;
     margin: 0;
+    min-height: 36px;
 }}
 
 QPushButton#sidebar_item:hover {{

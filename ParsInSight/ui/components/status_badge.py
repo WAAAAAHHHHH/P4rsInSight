@@ -12,9 +12,9 @@ from core.i18n_manager import i18n
 
 # Maps status → (object_name, text_i18n_key)
 _STATUS_MAP = {
-    "ok":      ("badge_ok",      "common.status_ok"),
-    "warning": ("badge_warning", "common.status_warning"),
-    "error":   ("badge_error",   "common.status_error"),
+    "ok":      ("badge_ok",      "dashboard.status_ok"),
+    "warning": ("badge_warning", "dashboard.status_warning"),
+    "error":   ("badge_error",   "dashboard.status_error"),
 }
 
 
