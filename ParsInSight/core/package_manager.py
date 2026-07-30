@@ -64,8 +64,13 @@ class CommandWorker(QThread):
             return
 
         try:
+            # Swap 'sudo' for 'pkexec' to get graphical password prompts
+            run_cmd = self.cmd.copy()
+            if run_cmd and run_cmd[0] == "sudo":
+                run_cmd[0] = "pkexec"
+
             proc = subprocess.Popen(
-                self.cmd,
+                run_cmd,
                 stdout=subprocess.PIPE,
                 stderr=subprocess.STDOUT,
                 text=True,
