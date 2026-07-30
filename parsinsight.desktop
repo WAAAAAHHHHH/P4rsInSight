@@ -1,9 +1,9 @@
 [Desktop Entry]
 Name=P4rsInSight
 Comment=Pardus Linux için akıllı başlangıç ve sistem yönetim uygulaması
-Exec=bash -c "cd \"\$(dirname \"%k\")\" && ./run_linux.sh"
+Exec=bash -c "DIR=\"\$(dirname \"%k\")\"; DIR=\"\${DIR#file://}\"; cd \"\$DIR\" && ./run_linux.sh"
 Icon=utilities-system-monitor
-Terminal=false
+Terminal=true
 Type=Application
 Categories=System;Utility;
 StartupNotify=true

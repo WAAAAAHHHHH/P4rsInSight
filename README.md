@@ -16,13 +16,36 @@
 ### Kurulum ve Çalıştırma Adımları / Setup & Launch Steps
 
 #### 🐧 Linux (Pardus) üzerinde hızlı başlatma / Quick launch on Linux:
-Linux üzerinde hiçbir bağımlılıkla manuel olarak uğraşmak istemiyorsanız, sanal ortamı ve gerekli tüm modülleri otomatik olarak ayarlayıp uygulamayı başlatan **`run_linux.sh`** betiğini veya **`parsinsight.desktop`** dosyasını kullanabilirsiniz:
+Linux üzerinde hiçbir bağımlılıkla manuel olarak uğraşmak istemiyorsanız, sanal ortamı ve gerekli tüm modülleri otomatik olarak ayarlayıp uygulamayı başlatan **`run_linux.sh`** betiğini veya **`parsinsight.desktop`** dosyasını kullanabilirsiniz.
 
+> [!IMPORTANT]
+> **TR:** Projeyi ZIP olarak indirdiyseniz veya çalıştırma izinleri tanımlanmadıysa, dosyaları doğrudan çift tıklatarak açamayabilirsiniz (varsayılan olarak metin editörü açılır). Öncelikle çalıştırma izinlerini vermeniz gerekir.
+> 
+> **EN:** If you downloaded the project as a ZIP file or if execution permissions are not set, double-clicking the files may open them in a text editor. You must make them executable first.
+
+##### Yöntem 1: Terminal / Method 1: Terminal
 ```bash
-# Terminal üzerinden çalıştırmak için:
+# 1. Betiğe çalıştırma izni verin / Make the script executable:
+chmod +x run_linux.sh
+
+# 2. Betiği çalıştırın / Run the script:
 ./run_linux.sh
 ```
-*Ayrıca arayüz üzerinden **`parsinsight.desktop`** başlatıcısına çift tıklayarak da doğrudan çalıştırabilirsiniz.*
+
+##### Yöntem 2: Masaüstü Kısayolu / Method 2: Desktop Launcher
+1. Terminalde başlatıcı dosyasına çalıştırma izni verin / Make the launcher executable:
+   ```bash
+   chmod +x parsinsight.desktop
+   ```
+2. Dosya yöneticisinde `parsinsight.desktop` dosyasına **sağ tıklayın** ve **"Başlatmaya İzin Ver" (Allow Launching)** seçeneğini seçin. / Right-click `parsinsight.desktop` and choose **"Allow Launching"**.
+3. Artık çift tıklayarak uygulamayı başlatabilirsiniz. / Now you can run it by double-clicking.
+
+##### 🛠️ Sorun Giderme / Troubleshooting
+* **Sanal ortam oluşturulamazsa / If virtual environment fails to create (`python3-venv` missing):**
+  Pardus/Debian üzerinde sisteminizde venv paketi eksik olabilir. Yüklemek için şu komutu çalıştırın / Install it using the following command:
+  ```bash
+  sudo apt update && sudo apt install python3-venv python3-pip -y
+  ```
 
 #### 🐍 Python ile Manuel Çalıştırma / Manual Run via Python:
 ```bash
