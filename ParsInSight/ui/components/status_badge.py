@@ -28,7 +28,10 @@ class StatusBadge(QLabel):
         self.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self._status = status
         self.set_status(status)
-        i18n.language_changed.connect(lambda _: self.set_status(self._status))
+        i18n.language_changed.connect(self._on_lang_changed)
+
+    def _on_lang_changed(self) -> None:
+        self.set_status(self._status)
 
     def set_status(self, status: str) -> None:
         self._status = status

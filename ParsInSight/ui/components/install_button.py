@@ -36,7 +36,10 @@ class InstallButton(QPushButton):
         self._busy = False
         self._update_state()
         self.clicked.connect(self._on_click)
-        i18n.language_changed.connect(lambda _: self._update_state())
+        i18n.language_changed.connect(self._on_lang_changed)
+
+    def _on_lang_changed(self) -> None:
+        self._update_state()
 
     @property
     def is_installed(self) -> bool:
