@@ -29,6 +29,8 @@ from PySide6.QtWidgets import (
 from core.i18n_manager import i18n
 from core.logger import get_logger
 from core.package_manager import CommandWorker, package_manager
+from core.settings_manager import settings
+import shutil
 from ui.components.card import Card
 from ui.components.install_button import InstallButton
 from ui.components.terminal_panel import TerminalPanel
@@ -189,9 +191,11 @@ class SoftwareCenterPage(QWidget):
             self._grid.addWidget(no_results, 0, 0, 1, 3)
             return
 
+        installed_list = settings.get("installed_apps", [])
         cols = 3
         for idx, app in enumerate(filtered):
-            card = AppCard(app, installed=False)
+            is_installed = app["id"] in installed_list
+            card = AppCard(app, installed=is_installed)
             card.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Fixed)
             card.install_btn.install_requested.connect(self._on_install)
             card.install_btn.remove_requested.connect(self._on_remove)
@@ -224,7 +228,17 @@ class SoftwareCenterPage(QWidget):
         # Build command
         method = app.get("install_method", "apt")
         if method == "flatpak":
-            cmd = ["flatpak", "install", "-y", "flathub", app.get("flatpak_id", "")]
+            flatpak_id = app.get("flatpak_id", "")
+            if not shutil.which("flatpak"):
+                # Auto install flatpak and flathub repository, then install application
+                cmd = [
+                    "sudo", "bash", "-c",
+                    f"apt-get update && apt-get install -y flatpak && "
+                    f"flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo && "
+                    f"flatpak install -y flathub {flatpak_id}"
+                ]
+            else:
+                cmd = ["flatpak", "install", "-y", "flathub", flatpak_id]
         else:
             pkgs = app.get("apt_package", app["id"]).split()
             cmd = ["sudo", "apt", "install", "-y"] + pkgs
@@ -264,8 +278,12 @@ class SoftwareCenterPage(QWidget):
         if not app:
             return
 
-        pkgs = app.get("apt_package", app["id"]).split()
-        cmd = ["sudo", "apt", "remove", "-y"] + pkgs
+        method = app.get("install_method", "apt")
+        if method == "flatpak":
+            cmd = ["flatpak", "uninstall", "-y", app.get("flatpak_id", "")]
+        else:
+            pkgs = app.get("apt_package", app["id"]).split()
+            cmd = ["sudo", "apt", "remove", "-y"] + pkgs
 
         msg = QMessageBox(self)
         msg.setWindowTitle(i18n.tr("software_center.confirm_remove"))
@@ -290,11 +308,21 @@ class SoftwareCenterPage(QWidget):
         card = self._app_cards.get(app_id)
         if card:
             card.install_btn.set_installed(success)
+        if success:
+            installed_list = list(settings.get("installed_apps", []))
+            if app_id not in installed_list:
+                installed_list.append(app_id)
+                settings.set("installed_apps", installed_list)
 
     def _on_remove_done(self, app_id: str, success: bool) -> None:
         card = self._app_cards.get(app_id)
         if card:
             card.install_btn.set_installed(not success)
+        if success:
+            installed_list = list(settings.get("installed_apps", []))
+            if app_id in installed_list:
+                installed_list.remove(app_id)
+                settings.set("installed_apps", installed_list)
 
     def _retranslate(self) -> None:
         self._search_input.setPlaceholderText(i18n.tr("software_center.search_placeholder"))

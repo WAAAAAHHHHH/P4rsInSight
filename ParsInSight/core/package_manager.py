@@ -85,6 +85,8 @@ class CommandWorker(QThread):
             proc.wait()
             success = proc.returncode == 0
             msg = "Completed successfully" if success else f"Exit code {proc.returncode}"
+            status_text = "ISLEM BASARIYLA TAMAMLANDI / COMPLETED SUCCESSFULLY" if success else f"HATA / ERROR (Exit code {proc.returncode})"
+            self.output_line.emit(f"\n--------------------------------------------------\n[{status_text}]\n")
             self.finished.emit(success, msg)
         except FileNotFoundError:
             msg = f"Command not found: {self.cmd[0]}"
