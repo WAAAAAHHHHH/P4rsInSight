@@ -13,8 +13,18 @@
 - **PySide6**: 6.6+
 - **psutil**: 5.9.0+
 
-### Kurulum Adımları / Setup Steps
+### Kurulum ve Çalıştırma Adımları / Setup & Launch Steps
 
+#### 🐧 Linux (Pardus) üzerinde hızlı başlatma / Quick launch on Linux:
+Linux üzerinde hiçbir bağımlılıkla manuel olarak uğraşmak istemiyorsanız, sanal ortamı ve gerekli tüm modülleri otomatik olarak ayarlayıp uygulamayı başlatan **`run_linux.sh`** betiğini veya **`parsinsight.desktop`** dosyasını kullanabilirsiniz:
+
+```bash
+# Terminal üzerinden çalıştırmak için:
+./run_linux.sh
+```
+*Ayrıca arayüz üzerinden **`parsinsight.desktop`** başlatıcısına çift tıklayarak da doğrudan çalıştırabilirsiniz.*
+
+#### 🐍 Python ile Manuel Çalıştırma / Manual Run via Python:
 ```bash
 # 1. Bağımlılıkları kur / Install dependencies
 pip install -r requirements.txt
